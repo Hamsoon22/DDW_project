@@ -39,9 +39,12 @@ export default function App() {
 export function Question({ result, index }) {
   return (
     <section id={`question-${index}`} className="fullpage-center">
-      <h3>
+      <h2>
         {index + 1}. {renderHTML(result.question)}
-      </h3>
+      </h2>
+      <div className="middleQuestion">
+        {renderHTML(result.middle)}
+      </div>
       {/* <div className="answers">
         <Answers result={result} parentIndex={index} />
       </div> */}
@@ -63,6 +66,7 @@ export function Question({ result, index }) {
         )}
       </section>
     </section>
+    
   );
 }
 
@@ -85,25 +89,25 @@ export function Question({ result, index }) {
 //   ));
 // }
 
-function Answer({ answer, index, parentIndex }) {
-  const { chosenAnswers, setChosenAnswers } = useAppContext();
-  return (
-    <Fragment>
-      <input
-        type="radio"
-        name={`question-${parentIndex}`}
-        onChange={element =>
-          setChosenAnswers(
-            handleChosenAnswer(element, parentIndex, chosenAnswers)
-          )
-        }
-        value={index}
-      />
-      {renderHTML(answer)}
-      <br />
-    </Fragment>
-  );
-}
+// function Answer({ answer, index, parentIndex }) {
+//   const { chosenAnswers, setChosenAnswers } = useAppContext();
+//   return (
+//     <Fragment>
+//       <input
+//         type="radio"
+//         name={`question-${parentIndex}`}
+//         onChange={element =>
+//           setChosenAnswers(
+//             handleChosenAnswer(element, parentIndex, chosenAnswers)
+//           )
+//         }
+//         value={index}
+//       />
+//       {renderHTML(answer)}
+//       <br />
+//     </Fragment>
+//   );
+// }
 
 /**
  * Saves me from writing type button over and over.

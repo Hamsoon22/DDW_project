@@ -22,7 +22,11 @@ button {
   font-size: 1rem;
 }
 
-.btn-group,
+.btn-group{
+  display: flex;
+  margin-top: 20px;
+}
+
 .fullpage-center {
   display: flex;
 }
