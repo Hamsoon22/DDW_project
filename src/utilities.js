@@ -1,5 +1,4 @@
 import React from "react";
-
 /**
  * Decode HTML entity and return it as HTML div element.
  *

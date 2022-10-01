@@ -4,50 +4,38 @@
       {
         "category": "aging and generational change",
         "type": "multiple",
-        "difficulty": "easy",
         "question": "When you were younger, what did you imagine you’d be like when you grew older?",
-        "answer": "Tetris",
-        "incorrect_answers": ["Wii Sports", "Minecraft", "Super Mario Bros"]
+        "answer": null
       },
       {
-        "category": "Entertainment: Video Games",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "The main character in the &quot;Half-Life&quot; franchise is named Morgan Freeman.",
-        "correct_answer": "False",
-        "incorrect_answers": ["True"]
-      },
-      {
-        "category": "Entertainment: Video Games",
+        "category": "data/privacy/technology",
         "type": "multiple",
-        "difficulty": "medium",
-        "question": "What engine did the original &quot;Half-Life&quot; run on?",
-        "correct_answer": "GoldSrc",
-        "incorrect_answers": ["Source", "Quake", "Unreal"]
+        "question": "When you were younger, what kind of technology did you imagine would be popular in the future?",
+        "answer": null
       },
       {
-        "category": "aging and generational change",
+        "category": "landscapes/flooding/climate change",
         "type": "multiple",
-        "difficulty": "easy",
-        "question": "Which game did NOT get financed via Crowdfunding?",
-        "correct_answer": "Enter the Gungeon",
-        "incorrect_answers": ["Town of Salem", "Undertale", "Tower Unite"]
+        "question": "When you were younger, what kind of connections with nature did you imagine would exist  in the future?",
+        "answer": null
       },
       {
-        "category": "Entertainment: Video Games",
+        "category": "mobility/transportation",
         "type": "multiple",
-        "difficulty": "easy",
-        "question": "What company created and developed the game &quot;Overwatch&quot;?",
-        "correct_answer": "Blizzard Entertainment",
-        "incorrect_answers": ["Valve", "Hi-Rez Studios", "Gearbox Software"]
+        "question": "When you were younger, how did you imagine getting around from place to place in the future?",
+        "answer": null
       },
       {
-        "category": "Entertainment: Video Games",
-        "type": "boolean",
-        "difficulty": "hard",
-        "question": "In &quot;Metal Gear Solid 2&quot;, you will see through the eyes of Psycho Mantis if you go first person during his boss fight.",
-        "correct_answer": "True",
-        "incorrect_answers": ["False"]
+        "category": "clothing and comfort (temperatures/climate change)",
+        "type": "multiple",
+        "question": "When you were younger, what did you imagine you would wear in the future?",
+        "answer": null
+      },
+      {
+        "category": "new materials",
+        "type": "multiple",
+        "question": "When you were younger, what did you imagine or dream about new materials?",
+        "answer": null
       }
     ]
   }
