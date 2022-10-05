@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, Component } from "react";
 
 import {
   renderHTML,
@@ -30,8 +30,10 @@ export default function App() {
       <Start />
       <PastSession />
       {renderPastQuestions()}
+      <PastSessionResult />
       <FutureSession />
       {renderFutureQuestions()}
+      <FutureSessionResult />
       <Finish />
     </Store.Provider>
   );
@@ -43,9 +45,9 @@ export default function App() {
  * @param {{results: any, index: number}} props
  */
 export function PastQuestion({ result, index }) {
-  const [data,setData] = useState(null);
-  const [print,setPrint] = useState(false);
-  function getData(val){
+  const [data, setData] = useState(null);
+  const [print, setPrint] = useState(false);
+  function getData(val) {
     setData(val.target.value)
     setPrint(false);
     console.warn(val.target.value)
@@ -57,13 +59,13 @@ export function PastQuestion({ result, index }) {
       </h2>
       <div className="answer">
         {
-          print?
-          <h1>{data}</h1>
-          :null
+          print ?
+            <h1>{data}</h1>
+            : null
         }
-          Your answer:
-          <input type="text" onChange={getData} future="future" />
-        <button onClick={()=>setPrint(true)}>submit</button>
+        Your answer:
+        <input type="text" onChange={getData} future="future" />
+        <button onClick={() => setPrint(true)}>submit</button>
       </div>
       <section className="btn-group" style={{ display: "flex" }}>
         {index !== 0 && (
@@ -79,7 +81,7 @@ export function PastQuestion({ result, index }) {
           />
         )}
         {index === PastQuestions - 1 && (
-          <Button text="finish" func={() => scrollToElem("FutureSession")} />
+          <Button text="finish" func={() => scrollToElem("PastSessionResult")} />
         )}
       </section>
     </section>
@@ -88,9 +90,9 @@ export function PastQuestion({ result, index }) {
 }
 
 export function FutureQuestion({ result, index }) {
-  const [data,setData] = useState(null);
-  const [print,setPrint] = useState(false);
-  function getData(val){
+  const [data, setData] = useState(null);
+  const [print, setPrint] = useState(false);
+  function getData(val) {
     setData(val.target.value)
     setPrint(false);
     console.warn(val.target.value)
@@ -102,13 +104,13 @@ export function FutureQuestion({ result, index }) {
       </h2>
       <div className="answer">
         {
-          print?
-          <h1>{data}</h1>
-          :null
+          print ?
+            <h1>{data}</h1>
+            : null
         }
-          Your answer:
-          <input type="text" onChange={getData} future="future" />
-        <button onClick={()=>setPrint(true)}>submit</button>
+        Your answer:
+        <input type="text" onChange={getData} future="future" />
+        <button onClick={() => setPrint(true)}>submit</button>
       </div>
       <section className="btn-group" style={{ display: "flex" }}>
         {index !== 0 && (
@@ -216,6 +218,14 @@ function PastSession() {
   );
 }
 
+function PastSessionResult() {
+  return (
+    <section className="fullpage-center" id="PastSessionResult">
+      <h1>This is your past image gerated by DifussionBee</h1>
+    </section>
+  )
+}
+
 function FutureSession() {
   return (
     <section className="fullpage-center" id="FutureSession">
@@ -230,6 +240,14 @@ function FutureSession() {
       <Button text="Ok" func={() => scrollToElem("futurequestion-0")} />
     </section>
   );
+}
+
+function FutureSessionResult() {
+  return (
+    <section className="fullpage-center" id="FuturetSessionResult">
+      <h1>This is your Future image gerated by DifussionBee</h1>
+    </section>
+  )
 }
 
 function Finish() {
