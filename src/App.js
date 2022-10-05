@@ -2,21 +2,26 @@ import React, { Fragment, useState, useContext } from "react";
 
 import {
   renderHTML,
-  scrollToElem,
-  handleChosenAnswer,
+  scrollToElem
 } from "./utilities";
-import { Store, useAppContext } from "./AppContext";
+import { Store } from "./AppContext";
 import "./styles.css";
 import data from "./data.json";
 
 /** Used to compare against user's chosen answers */
-const totalQuestions = data.results.length;
+const PastQuestions = data.results.length;
+const FutureQuestions = data.FutureResult.length;
 
 export default function App() {
   const [chosenAnswers, setChosenAnswers] = useState([]);
-  function renderQuestions() {
+  function renderPastQuestions() {
     return data.results.map((result, index) => (
-      <Question key={index} result={result} index={index} />
+      <PastQuestion key={index} result={result} index={index} />
+    ));
+  }
+  function renderFutureQuestions() {
+    return data.FutureResult.map((result, index) => (
+      <FutureQuestion key={index} result={result} index={index} />
     ));
   }
 
@@ -24,8 +29,9 @@ export default function App() {
     <Store.Provider value={{ chosenAnswers, setChosenAnswers }}>
       <Start />
       <PastSession />
+      {renderPastQuestions()}
       <FutureSession />
-      {renderQuestions()}
+      {renderFutureQuestions()}
       <Finish />
     </Store.Provider>
   );
@@ -36,18 +42,19 @@ export default function App() {
  *
  * @param {{results: any, index: number}} props
  */
-export function Question({ result, index }) {
+export function PastQuestion({ result, index }) {
   return (
-    <section id={`question-${index}`} className="fullpage-center">
+    <><section id={`question-${index}`} className="fullpage-center">
       <h2>
-        {index + 1}. {renderHTML(result.question)}
+        {index + 1}.{renderHTML(result.question)}
       </h2>
-      <div className="middleQuestion">
-        {renderHTML(result.middle)}
-      </div>
-      {/* <div className="answers">
-        <Answers result={result} parentIndex={index} />
-      </div> */}
+      <form>
+        <label>
+          Your answer:
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
       <section className="btn-group" style={{ display: "flex" }}>
         {index !== 0 && (
           <Button
@@ -55,18 +62,53 @@ export function Question({ result, index }) {
             func={() => scrollToElem(`question-${index - 1}`)}
           />
         )}
-        {index !== totalQuestions - 1 && (
+        {index !== PastQuestions - 1 && (
           <Button
             text="next"
             func={() => scrollToElem(`question-${index + 1}`)}
           />
         )}
-        {index === totalQuestions - 1 && (
+        {index === PastQuestions - 1 && (
+          <Button text="finish" func={() => scrollToElem("FutureSession")} />
+        )}
+      </section>
+    </section>
+    </>
+  );
+}
+
+export function FutureQuestion({ result, index }) {
+  return (
+    <><section id={`futurequestion-${index}`} className="fullpage-center">
+      <h2>
+        {index + 1}.{renderHTML(result.futurequestion)}
+      </h2>
+      <form>
+        <label>
+          Your answer:
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      <section className="btn-group" style={{ display: "flex" }}>
+        {index !== 0 && (
+          <Button
+            text="prev"
+            func={() => scrollToElem(`futurequestion-${index - 1}`)}
+          />
+        )}
+        {index !== FutureQuestions - 1 && (
+          <Button
+            text="next"
+            func={() => scrollToElem(`futurequestion-${index + 1}`)}
+          />
+        )}
+        {index === FutureQuestions - 1 && (
           <Button text="finish" func={() => scrollToElem("finish")} />
         )}
       </section>
     </section>
-    
+    </>
   );
 }
 
@@ -149,7 +191,7 @@ function PastSession() {
         (technology, everyday living, environment, travel, fashion, politics)
         or more broadly.
       </p>
-      <Button text="Ok" func={() => scrollToElem("FutureSession")} />
+      <Button text="Ok" func={() => scrollToElem("question-0")} />
     </section>
   );
 }
@@ -159,13 +201,13 @@ function FutureSession() {
     <section className="fullpage-center" id="FutureSession">
       <h1>Second, think about Your future</h1>
       <h2>Now think about the present.
-         <br></br>What visions of a possible future motivate or affect you right now?
+        <br></br>What visions of a possible future motivate or affect you right now?
       </h2>
       <p>These could be ideas, images, concepts, hopes, that are 'still to happen'
-        but nevertheless have a hold on you—inspire or motivate you (or worry you), 
+        but nevertheless have a hold on you—inspire or motivate you (or worry you),
         affecting the way you think about or approach the world.
       </p>
-      <Button text="Ok" func={() => scrollToElem("question-0")} />
+      <Button text="Ok" func={() => scrollToElem("futurequestion-0")} />
     </section>
   );
 }
@@ -193,7 +235,7 @@ function Finish() {
 
   return (
     <section className="fullpage-center" id="finish">
-      {answeredQuestions === totalQuestions ? textCompleted : textIncomplete}
+      {answeredQuestions === PastQuestions ? textCompleted : textIncomplete}
     </section>
   );
 }
