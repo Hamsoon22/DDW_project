@@ -43,18 +43,28 @@ export default function App() {
  * @param {{results: any, index: number}} props
  */
 export function PastQuestion({ result, index }) {
+  const [data,setData] = useState(null);
+  const [print,setPrint] = useState(false);
+  function getData(val){
+    setData(val.target.value)
+    setPrint(false);
+    console.warn(val.target.value)
+  }
   return (
     <><section id={`question-${index}`} className="fullpage-center">
       <h2>
         {index + 1}.{renderHTML(result.question)}
       </h2>
-      <form>
-        <label>
+      <div className="answer">
+        {
+          print?
+          <h1>{data}</h1>
+          :null
+        }
           Your answer:
-          <input type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+          <input type="text" onChange={getData} future="future" />
+        <button onClick={()=>setPrint(true)}>submit</button>
+      </div>
       <section className="btn-group" style={{ display: "flex" }}>
         {index !== 0 && (
           <Button
@@ -78,18 +88,28 @@ export function PastQuestion({ result, index }) {
 }
 
 export function FutureQuestion({ result, index }) {
+  const [data,setData] = useState(null);
+  const [print,setPrint] = useState(false);
+  function getData(val){
+    setData(val.target.value)
+    setPrint(false);
+    console.warn(val.target.value)
+  }
   return (
     <><section id={`futurequestion-${index}`} className="fullpage-center">
       <h2>
         {index + 1}.{renderHTML(result.futurequestion)}
       </h2>
-      <form>
-        <label>
+      <div className="answer">
+        {
+          print?
+          <h1>{data}</h1>
+          :null
+        }
           Your answer:
-          <input type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+          <input type="text" onChange={getData} future="future" />
+        <button onClick={()=>setPrint(true)}>submit</button>
+      </div>
       <section className="btn-group" style={{ display: "flex" }}>
         {index !== 0 && (
           <Button
