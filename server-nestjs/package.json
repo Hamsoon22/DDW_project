@@ -1,10 +1,10 @@
 {
   "name": "server-nestjs",
-  "version": "0.1.0",
-  "description": "Y-Box server written in NestJS",
+  "version": "0.0.1",
+  "description": "FutureAI server written in NestJS",
   "author": "David Zwart",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "PRIVATE",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
