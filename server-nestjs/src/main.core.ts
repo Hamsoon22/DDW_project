@@ -14,6 +14,7 @@ import { isProduction } from '@/utils/env.utils';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { useContainer } from 'class-validator';
 import { ConfigService } from '@nestjs/config';
+import { join } from 'path';
 
 export function configureSwagger() {
   // API spec - can be disabled in Prod
@@ -28,7 +29,7 @@ export function configureSwagger() {
     .build();
 }
 
-export function registerGlobals(app: INestApplication) {
+export function registerGlobals(app: NestExpressApplication) {
   // Common security policies like HSTS
   app.use(helmet());
 
@@ -41,6 +42,8 @@ export function registerGlobals(app: INestApplication) {
     type: VersioningType.URI,
     defaultVersion: '1',
   });
+
+  app.useStaticAssets(join(__dirname, '../..', '.out'));
 
   // API DTO validation using class-transformer
   app.useGlobalPipes(

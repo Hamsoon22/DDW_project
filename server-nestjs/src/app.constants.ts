@@ -15,4 +15,7 @@ export const socketIOAdminUIPasswordBCryptToken =
   'SOCKETIO_ADMINUI_PASSWORD_BCRYPT';
 export const socketIOAdminUIDefaultUsername = 'admin';
 
+// DreamStudio integration
+export const dreamStudioApiKeyToken = 'DREAMSTUDIO_API_KEY';
+
 export const apiWelcomeMessage = 'FutureAI server is running';
