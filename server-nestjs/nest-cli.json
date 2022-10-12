@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "@nestjs/swagger",
+        "options": {
+          "introspectComments": true,
+          "classValidatorShim": true,
+          "controllerFileNameSuffix": ".controller.ts",
+          "dtoFileNameSuffix": [
+            ".dto.ts",
+            ".dtos.ts"
+          ]
+        }
+      }
+    ]
+  }
+}

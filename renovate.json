@@ -1,0 +1,23 @@
+{
+  "extends": ["config:base"],
+  "assignees": ["davidzwa"],
+  "labels": ["renovate"],
+  "ignorePaths": ["**/.vscode/**", "**/.idea/**", "**/.docker/**"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": ["schedule:daily"]
+  },
+  "automerge": true,
+  "schedule": ["after 10pm", "before 5:00am"],
+  "packageRules": [
+    {
+      "matchPaths": ["server-nestjs/*"],
+      "automerge": true
+    },
+    {
+      "matchPaths": ["client/*"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
+}
