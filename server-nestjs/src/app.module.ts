@@ -9,6 +9,7 @@ import * as Joi from 'joi';
 import {
   defaultMediaPath,
   defaultServerPort,
+  dreamStudioApiKeyToken,
   mediaToken,
   nodeEnvToken,
   portToken,
@@ -48,6 +49,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
             ),
             [socketIOAdminUIPasswordBCryptToken]: Joi.string(),
             [socketIOAdminUIPasswordToken]: Joi.string(),
+            [dreamStudioApiKeyToken]: Joi.string().required(),
           })
         : Joi.object(),
     }),
