@@ -3220,7 +3220,7 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.12.tgz#69077835abe2710b65f03969898b6637b505a779"
   integrity sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==
 
-stability-client@^1.6.0:
+stability-client@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/stability-client/-/stability-client-1.6.0.tgz#f23612d8942d49937b6f99114fca9a522c5b076b"
   integrity sha512-Kx47rnlSBI3hWArF846YdfXKtef0sjNjGbPRdCc62XB6ZFvRBis67hI1xvejn5wu2wTKBZNL4jWM/oOU1xnUYg==
