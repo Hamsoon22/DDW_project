@@ -1,0 +1,22 @@
+/.github
+/.idea
+**/*.ps1
+.git
+.env
+.gitignore
+**/*.env
+**/*docker-compose.yml
+**/*Dockerfile
+**/*.md
+*.txt
+**/.build
+**/.cache
+/**/node_modules
+
+# Runtime and non-production folders
+/**/coverage
+/**/docs
+/**/dist
+/**/logs
+/**/test
+/**/views
