@@ -1,4 +1,4 @@
-import { Controller, Get, Post, VERSION_NEUTRAL } from '@nestjs/common';
+import { Body, Controller, Get, Post, VERSION_NEUTRAL } from '@nestjs/common';
 import { AppService } from '@/app.service';
 import { ApiTags } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
@@ -22,7 +22,7 @@ export class AppController {
   }
 
   @Post('dreamstudio-image')
-  async generateImage(input: RequestImageDto) {
+  async generateImage(@Body() input: RequestImageDto) {
     const apiKey = this.configService.get(dreamStudioApiKeyToken);
     return await generateAsync({
       prompt: input.prompt,
