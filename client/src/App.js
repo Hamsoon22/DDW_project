@@ -1,7 +1,7 @@
-import React, { Fragment, useState, useContext, Component } from "react";
+import React, { Fragment, useState, useContext } from "react";
 
 import { renderHTML, scrollToElem } from "./utilities";
-import { Store } from "./AppContext";
+import { Store, useAppContext } from "./AppContext";
 import "./styles.css";
 import data from "./data.json";
 
@@ -11,7 +11,6 @@ const FutureQuestions = data.FutureResult.length;
 
 export default function App() {
   const [chosenAnswers, setChosenAnswers] = useState([]);
-
   const [pastAnswers, setPastAnswers] = useState(data.results.map(() => ""));
   const [futureAnswers, setFutureAnswers] = useState(data.FutureResult.map(() => ""));
 
@@ -257,9 +256,38 @@ function PastSession() {
 }
 
 function PastSessionResult() {
+  const { pastAnswers } = useAppContext();
+  const promptText =
+    'Sometext with quite a lot of words so that DreamStudio can do a good job. Factory worker playing AI games.';
+    fetch('http://localhost:4000/api/dreamstudio-image', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      prompt: promptText,
+      width: 200,
+      height: 200,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById(
+        'image',
+      ).src = `http://localhost:4000/${data.serveUrl}`;
+    });
+
   return (
     <section className="fullpage-center" id="PastSessionResult">
       <h1>This is your past image gerated by DifussionBee</h1>
+      <div className="Pastanswer">
+        <h1>Your anwser is..</h1>
+        <div className="past-image-result">
+        {promptText}
+        <img id="image" src=""  crossOrigin="anonymous" />
+      </div>
+      </div>
     </section>
   );
 }
@@ -284,9 +312,38 @@ function FutureSession() {
 }
 
 function FutureSessionResult() {
+  const { furureAnswers } = useAppContext();
+  const promptText =
+    'Sometext with quite a lot of words so that DreamStudio can do a good job. Factory worker playing AI games.';
+    fetch('http://localhost:4000/api/dreamstudio-image', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      prompt: promptText,
+      width: 200,
+      height: 200,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById(
+        'image',
+      ).src = `http://localhost:4000/${data.serveUrl}`;
+    });
+
   return (
     <section className="fullpage-center" id="FuturetSessionResult">
       <h1>This is your Future image gerated by DifussionBee</h1>
+      <div className="future">
+        <h1>Your anwser is..</h1>
+        <div className="future-image-result">
+        {promptText}
+        <img id="image" src=""  crossOrigin="anonymous" />
+      </div>
+      </div>
     </section>
   );
 }
