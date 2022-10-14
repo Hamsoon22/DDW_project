@@ -1,9 +1,6 @@
 import React, { Fragment, useState, useContext, Component } from "react";
 
-import {
-  renderHTML,
-  scrollToElem
-} from "./utilities";
+import { renderHTML, scrollToElem } from "./utilities";
 import { Store } from "./AppContext";
 import "./styles.css";
 import data from "./data.json";
@@ -14,14 +11,40 @@ const FutureQuestions = data.FutureResult.length;
 
 export default function App() {
   const [chosenAnswers, setChosenAnswers] = useState([]);
+
+  const [pastAnswers, setPastAnswers] = useState(data.results.map(() => ""));
+  const [futureAnswers, setFutureAnswers] = useState(data.FutureResult.map(() => ""));
+
+  console.log({ pastAnswers, futureAnswers });
+
   function renderPastQuestions() {
     return data.results.map((result, index) => (
-      <PastQuestion key={index} result={result} index={index} />
+      <PastQuestion
+        key={index}
+        result={result}
+        index={index}
+        onSubmit={(answer) =>
+          setPastAnswers((prev) => {
+            prev[index] = answer;
+            return [...prev];
+          })
+        }
+      />
     ));
   }
   function renderFutureQuestions() {
     return data.FutureResult.map((result, index) => (
-      <FutureQuestion key={index} result={result} index={index} />
+      <FutureQuestion
+        key={index}
+        result={result}
+        index={index}
+        onSubmit={(answer) =>
+          setFutureAnswers((prev) => {
+            prev[index] = answer;
+            return [...prev];
+          })
+        }
+      />
     ));
   }
 
@@ -42,94 +65,105 @@ export default function App() {
 /**
  * Renders questions, answers and buttons to progress.
  *
- * @param {{results: any, index: number}} props
+ * @param {{results: any, index: number, onSubmit: (answer: string) => any}} props
  */
-export function PastQuestion({ result, index }) {
+export function PastQuestion({ result, index, onSubmit }) {
   const [data, setData] = useState(null);
   const [print, setPrint] = useState(false);
   function getData(val) {
-    setData(val.target.value)
+    setData(val.target.value);
     setPrint(false);
-    console.warn(val.target.value)
+    console.warn(val.target.value);
   }
   return (
-    <><section id={`question-${index}`} className="fullpage-center">
-      <h2>
-        {index + 1}.{renderHTML(result.question)}
-      </h2>
-      <div className="answer">
-        {
-          print ?
-            <h1>{data}</h1>
-            : null
-        }
-        Your answer:
-        <input type="text" onChange={getData} future="future" />
-        <button onClick={() => setPrint(true)}>submit</button>
-      </div>
-      <section className="btn-group" style={{ display: "flex" }}>
-        {index !== 0 && (
-          <Button
-            text="prev"
-            func={() => scrollToElem(`question-${index - 1}`)}
-          />
-        )}
-        {index !== PastQuestions - 1 && (
-          <Button
-            text="next"
-            func={() => scrollToElem(`question-${index + 1}`)}
-          />
-        )}
-        {index === PastQuestions - 1 && (
-          <Button text="finish" func={() => scrollToElem("PastSessionResult")} />
-        )}
+    <>
+      <section id={`question-${index}`} className="fullpage-center">
+        <h2>
+          {index + 1}.{renderHTML(result.question)}
+        </h2>
+        <div className="answer">
+          {print ? <h1>{data}</h1> : null}
+          Your answer:
+          <input type="text" onChange={getData} future="future" />
+          <button
+            onClick={() => {
+              setPrint(true);
+              onSubmit(data);
+            }}
+          >
+            submit
+          </button>
+        </div>
+        <section className="btn-group" style={{ display: "flex" }}>
+          {index !== 0 && (
+            <Button
+              text="prev"
+              func={() => scrollToElem(`question-${index - 1}`)}
+            />
+          )}
+          {index !== PastQuestions - 1 && (
+            <Button
+              text="next"
+              func={() => scrollToElem(`question-${index + 1}`)}
+            />
+          )}
+          {index === PastQuestions - 1 && (
+            <Button
+              text="finish"
+              func={() => scrollToElem("PastSessionResult")}
+            />
+          )}
+        </section>
       </section>
-    </section>
     </>
   );
 }
 
-export function FutureQuestion({ result, index }) {
+export function FutureQuestion({ result, index, onSubmit }) {
   const [data, setData] = useState(null);
   const [print, setPrint] = useState(false);
   function getData(val) {
-    setData(val.target.value)
+    setData(val.target.value);
     setPrint(false);
-    console.warn(val.target.value)
+    console.warn(val.target.value);
   }
   return (
-    <><section id={`futurequestion-${index}`} className="fullpage-center">
-      <h2>
-        {index + 1}.{renderHTML(result.futurequestion)}
-      </h2>
-      <div className="answer">
-        {
-          print ?
-            <h1>{data}</h1>
-            : null
-        }
-        Your answer:
-        <input type="text" onChange={getData} future="future" />
-        <button onClick={() => setPrint(true)}>submit</button>
-      </div>
-      <section className="btn-group" style={{ display: "flex" }}>
-        {index !== 0 && (
-          <Button
-            text="prev"
-            func={() => scrollToElem(`futurequestion-${index - 1}`)}
-          />
-        )}
-        {index !== FutureQuestions - 1 && (
-          <Button
-            text="next"
-            func={() => scrollToElem(`futurequestion-${index + 1}`)}
-          />
-        )}
-        {index === FutureQuestions - 1 && (
-          <Button text="finish" func={() => scrollToElem("finish")} />
-        )}
+    <>
+      <section id={`futurequestion-${index}`} className="fullpage-center">
+        <h2>
+          {index + 1}.{renderHTML(result.futurequestion)}
+        </h2>
+        <div className="answer">
+          {print ? <h1>{data}</h1> : null}
+          Your answer:
+          <input type="text" onChange={getData} future="future" />
+          <button
+            onClick={() => {
+              setPrint(true);
+              onSubmit(data);
+            }}
+          >
+            submit
+          </button>
+        </div>
+        <section className="btn-group" style={{ display: "flex" }}>
+          {index !== 0 && (
+            <Button
+              text="prev"
+              func={() => scrollToElem(`futurequestion-${index - 1}`)}
+            />
+          )}
+          {index !== FutureQuestions - 1 && (
+            <Button
+              text="next"
+              func={() => scrollToElem(`futurequestion-${index + 1}`)}
+            />
+          )}
+          {index === FutureQuestions - 1 && (
+            <Button text="finish" func={() => scrollToElem("finish")} />
+          )}
+        </section>
       </section>
-    </section>
     </>
   );
 }
@@ -190,11 +224,13 @@ function Start() {
   return (
     <section className="fullpage-center" id="start">
       <h1>Future DDW 2022</h1>
-      <h2>We are going to ask questions about your past and future.
-        <br></br>Your answer will be appear in the screen as an image generated by ai.</h2>
+      <h2>
+        We are going to ask questions about your past and future.
+        <br></br>Your answer will be appear in the screen as an image generated
+        by ai.
+      </h2>
       <Button text="Let's go!" func={() => scrollToElem("PastSession")} />
     </section>
-
   );
 }
 
@@ -202,16 +238,18 @@ function PastSession() {
   return (
     <section className="fullpage-center" id="PastSession">
       <h1>First, think about Your past</h1>
-      <h2>Think back to when you were younger.
-        <br></br>What ideas or visions did you have of what the future might be like,
+      <h2>
+        Think back to when you were younger.
+        <br></br>What ideas or visions did you have of what the future might be
+        like,
         <br></br>that still affect you today—even if they never happened?
       </h2>
-      <p>These could be ideas, images, concepts, memories, that are 'past'
-        but still have a hold on you—still motivate or worry you,
-        still affect the way you think about or approach the world.
-        They might be about a specific area of life
-        (technology, everyday living, environment, travel, fashion, politics)
-        or more broadly.
+      <p>
+        These could be ideas, images, concepts, memories, that are 'past' but
+        still have a hold on you—still motivate or worry you, still affect the
+        way you think about or approach the world. They might be about a
+        specific area of life (technology, everyday living, environment, travel,
+        fashion, politics) or more broadly.
       </p>
       <Button text="Ok" func={() => scrollToElem("question-0")} />
     </section>
@@ -223,19 +261,22 @@ function PastSessionResult() {
     <section className="fullpage-center" id="PastSessionResult">
       <h1>This is your past image gerated by DifussionBee</h1>
     </section>
-  )
+  );
 }
 
 function FutureSession() {
   return (
     <section className="fullpage-center" id="FutureSession">
       <h1>Second, think about Your future</h1>
-      <h2>Now think about the present.
-        <br></br>What visions of a possible future motivate or affect you right now?
+      <h2>
+        Now think about the present.
+        <br></br>What visions of a possible future motivate or affect you right
+        now?
       </h2>
-      <p>These could be ideas, images, concepts, hopes, that are 'still to happen'
-        but nevertheless have a hold on you—inspire or motivate you (or worry you),
-        affecting the way you think about or approach the world.
+      <p>
+        These could be ideas, images, concepts, hopes, that are 'still to
+        happen' but nevertheless have a hold on you—inspire or motivate you (or
+        worry you), affecting the way you think about or approach the world.
       </p>
       <Button text="Ok" func={() => scrollToElem("futurequestion-0")} />
     </section>
@@ -247,7 +288,7 @@ function FutureSessionResult() {
     <section className="fullpage-center" id="FuturetSessionResult">
       <h1>This is your Future image gerated by DifussionBee</h1>
     </section>
-  )
+  );
 }
 
 function Finish() {
@@ -269,7 +310,9 @@ function Finish() {
   /** Questions answered out of sequence will cause array to have `undefineds`
    * this variable counts the length with those filtered out
    */
-  const answeredQuestions = chosenAnswers.filter(ar => ar !== undefined).length;
+  const answeredQuestions = chosenAnswers.filter(
+    (ar) => ar !== undefined
+  ).length;
 
   return (
     <section className="fullpage-center" id="finish">
