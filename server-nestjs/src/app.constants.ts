@@ -17,5 +17,3 @@ export const socketIOAdminUIDefaultUsername = 'admin';
 
 // DreamStudio integration
 export const dreamStudioApiKeyToken = 'DREAMSTUDIO_API_KEY';
-
-export const apiWelcomeMessage = 'FutureAI server is running';
