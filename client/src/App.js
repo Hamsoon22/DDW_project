@@ -261,6 +261,7 @@ function PastSessionResult({pastAnswers}) {
   const [imageUrl, setImageUrl] = useState("")
   const promptText =
     'your past : ' + pastAnswers.join(", ");
+    <br></br>
     fetch('http://localhost:4000/api/dreamstudio-image', {
     method: 'POST',
     headers: {
