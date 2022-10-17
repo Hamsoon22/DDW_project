@@ -52,10 +52,10 @@ export default function App() {
       <Start />
       <PastSession />
       {renderPastQuestions()}
-      <PastSessionResult />
+      <PastSessionResult pastAnswers = {pastAnswers} />
       <FutureSession />
       {renderFutureQuestions()}
-      <FutureSessionResult />
+      <FutureSessionResult futureAnswers = {futureAnswers}/>
       <Finish />
     </Store.Provider>
   );
@@ -255,10 +255,11 @@ function PastSession() {
   );
 }
 
-function PastSessionResult() {
-  const { pastAnswers } = useAppContext();
+
+
+function PastSessionResult({pastAnswers}) {
   const promptText =
-    'Sometext with quite a lot of words so that DreamStudio can do a good job. Factory worker playing AI games.';
+    'your past : ' + pastAnswers.join(", ");
     fetch('http://localhost:4000/api/dreamstudio-image', {
     method: 'POST',
     headers: {
@@ -311,10 +312,9 @@ function FutureSession() {
   );
 }
 
-function FutureSessionResult() {
-  const { furureAnswers } = useAppContext();
+function FutureSessionResult({futureAnswers}) {
   const promptText =
-    'Sometext with quite a lot of words so that DreamStudio can do a good job. Factory worker playing AI games.';
+  'your future : ' + futureAnswers.join(", ");
     fetch('http://localhost:4000/api/dreamstudio-image', {
     method: 'POST',
     headers: {
@@ -367,13 +367,13 @@ function Finish() {
   /** Questions answered out of sequence will cause array to have `undefineds`
    * this variable counts the length with those filtered out
    */
-  const answeredQuestions = chosenAnswers.filter(
-    (ar) => ar !== undefined
-  ).length;
+  // const answeredQuestions = chosenAnswers.filter(
+  //   (ar) => ar !== undefined
+  // ).length;
 
-  return (
-    <section className="fullpage-center" id="finish">
-      {answeredQuestions === PastQuestions ? textCompleted : textIncomplete}
-    </section>
-  );
+  // return (
+  //   <section className="fullpage-center" id="finish">
+  //     {answeredQuestions === PastQuestions ? textCompleted : textIncomplete}
+  //   </section>
+  // );
 }
