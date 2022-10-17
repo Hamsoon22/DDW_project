@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useContext } from "react";
-
 import { renderHTML, scrollToElem } from "./utilities";
-import { Store, useAppContext } from "./AppContext";
+import { Store } from "./AppContext";
 import "./styles.css";
 import data from "./data.json";
 
@@ -48,6 +47,7 @@ export default function App() {
   }
 
   return (
+  <div className="background">
     <Store.Provider value={{ chosenAnswers, setChosenAnswers }}>
       <Start />
       <PastSession />
@@ -58,6 +58,7 @@ export default function App() {
       <FutureSessionResult futureAnswers = {futureAnswers}/>
       <Finish />
     </Store.Provider>
+  </div>
   );
 }
 
@@ -104,6 +105,10 @@ export function PastQuestion({ result, index, onSubmit }) {
             <Button
               text="next"
               func={() => scrollToElem(`question-${index + 1}`)}
+               onClick={() => {
+              setPrint(true);
+              onSubmit(data);
+            }}
             />
           )}
           {index === PastQuestions - 1 && (
@@ -260,8 +265,7 @@ function PastSession() {
 function PastSessionResult({pastAnswers}) {
   const [imageUrl, setImageUrl] = useState("")
   const promptText =
-    'your past : ' + pastAnswers.join(", ");
-    <br></br>
+    'Your past : ' + pastAnswers.join(", ") + ", " + 'nostalgic';
     fetch('http://localhost:4000/api/dreamstudio-image', {
     method: 'POST',
     headers: {
@@ -283,11 +287,13 @@ function PastSessionResult({pastAnswers}) {
     <section className="fullpage-center" id="PastSessionResult">
       <h1>This is your past image gerated by StableDiffusion</h1>
       <div className="Pastanswer">
-        <h1>Your anwser is..</h1>
+        <h1>Your anwser is..
         <div className="past-image-result">
+        </div>
         {promptText}
+        </h1>
+        <br></br>
         <img src={imageUrl}  crossOrigin="anonymous" />
-      </div>
       </div>
     </section>
   );
@@ -315,7 +321,7 @@ function FutureSession() {
 function FutureSessionResult({futureAnswers}) {
   const [imageUrl, setImageUrl] = useState("")
   const promptText =
-  'your future : ' + futureAnswers.join(", ");
+  'your future : ' + futureAnswers.join(", ") + 'futuristic';
     fetch('http://localhost:4000/api/dreamstudio-image', {
     method: 'POST',
     headers: {
