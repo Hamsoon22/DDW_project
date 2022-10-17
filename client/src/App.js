@@ -52,7 +52,7 @@ export default function App() {
       <Start />
       <PastSession />
       {renderPastQuestions()}
-      <PastSessionResult pastAnswers = {pastAnswers} />
+      <PastSessionResult pastAnswers = {pastAnswers}/>
       <FutureSession />
       {renderFutureQuestions()}
       <FutureSessionResult futureAnswers = {futureAnswers}/>
@@ -258,6 +258,7 @@ function PastSession() {
 
 
 function PastSessionResult({pastAnswers}) {
+  const [imageUrl, setImageUrl] = useState("")
   const promptText =
     'your past : ' + pastAnswers.join(", ");
     fetch('http://localhost:4000/api/dreamstudio-image', {
@@ -274,19 +275,17 @@ function PastSessionResult({pastAnswers}) {
   })
     .then((response) => response.json())
     .then((data) => {
-      document.getElementById(
-        'image',
-      ).src = `http://localhost:4000/${data.serveUrl}`;
+      setImageUrl(`http://localhost:4000/${data.serveUrl}`);
     });
 
   return (
     <section className="fullpage-center" id="PastSessionResult">
-      <h1>This is your past image gerated by DifussionBee</h1>
+      <h1>This is your past image gerated by StableDiffusion</h1>
       <div className="Pastanswer">
         <h1>Your anwser is..</h1>
         <div className="past-image-result">
         {promptText}
-        <img id="image" src=""  crossOrigin="anonymous" />
+        <img src={imageUrl}  crossOrigin="anonymous" />
       </div>
       </div>
     </section>
@@ -313,6 +312,7 @@ function FutureSession() {
 }
 
 function FutureSessionResult({futureAnswers}) {
+  const [imageUrl, setImageUrl] = useState("")
   const promptText =
   'your future : ' + futureAnswers.join(", ");
     fetch('http://localhost:4000/api/dreamstudio-image', {
@@ -329,19 +329,17 @@ function FutureSessionResult({futureAnswers}) {
   })
     .then((response) => response.json())
     .then((data) => {
-      document.getElementById(
-        'image',
-      ).src = `http://localhost:4000/${data.serveUrl}`;
+      setImageUrl(`http://localhost:4000/${data.serveUrl}`);
     });
 
   return (
     <section className="fullpage-center" id="FuturetSessionResult">
-      <h1>This is your Future image gerated by DifussionBee</h1>
+      <h1>This is your Future image gerated by StableDiffusion</h1>
       <div className="future">
         <h1>Your anwser is..</h1>
         <div className="future-image-result">
         {promptText}
-        <img id="image" src=""  crossOrigin="anonymous" />
+        <img id="image" src={imageUrl} crossOrigin="anonymous" />
       </div>
       </div>
     </section>
