@@ -11,7 +11,9 @@ const FutureQuestions = data.FutureResult.length;
 export default function App() {
   const [chosenAnswers, setChosenAnswers] = useState([]);
   const [pastAnswers, setPastAnswers] = useState(data.results.map(() => ""));
-  const [futureAnswers, setFutureAnswers] = useState(data.FutureResult.map(() => ""));
+  const [futureAnswers, setFutureAnswers] = useState(
+    data.FutureResult.map(() => "")
+  );
 
   console.log({ pastAnswers, futureAnswers });
 
@@ -47,18 +49,18 @@ export default function App() {
   }
 
   return (
-  <div className="background">
-    <Store.Provider value={{ chosenAnswers, setChosenAnswers }}>
-      <Start />
-      <PastSession />
-      {renderPastQuestions()}
-      <PastSessionResult pastAnswers = {pastAnswers}/>
-      <FutureSession />
-      {renderFutureQuestions()}
-      <FutureSessionResult futureAnswers = {futureAnswers}/>
-      <Finish />
-    </Store.Provider>
-  </div>
+    <div className="background">
+      <Store.Provider value={{ chosenAnswers, setChosenAnswers }}>
+        <Start />
+        <PastSession />
+        {renderPastQuestions()}
+        <PastSessionResult pastAnswers={pastAnswers} />
+        <FutureSession />
+        {renderFutureQuestions()}
+        <FutureSessionResult futureAnswers={futureAnswers} />
+        <Finish />
+      </Store.Provider>
+    </div>
   );
 }
 
@@ -105,10 +107,10 @@ export function PastQuestion({ result, index, onSubmit }) {
             <Button
               text="next"
               func={() => scrollToElem(`question-${index + 1}`)}
-               onClick={() => {
-              setPrint(true);
-              onSubmit(data);
-            }}
+              onClick={() => {
+                setPrint(true);
+                onSubmit(data);
+              }}
             />
           )}
           {index === PastQuestions - 1 && (
@@ -260,17 +262,15 @@ function PastSession() {
   );
 }
 
-
-
-function PastSessionResult({pastAnswers}) {
-  const [imageUrl, setImageUrl] = useState("")
+function PastSessionResult({ pastAnswers }) {
+  const [imageUrl, setImageUrl] = useState("");
   const promptText =
-    'Your past : ' + pastAnswers.join(", ") + ", " + 'nostalgic';
-    fetch('http://localhost:4000/api/dreamstudio-image', {
-    method: 'POST',
+    "Your past : " + pastAnswers.join(", ") + ", " + "nostalgic";
+  fetch("http://localhost:4000/api/dreamstudio-image", {
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       prompt: promptText,
@@ -287,13 +287,13 @@ function PastSessionResult({pastAnswers}) {
     <section className="fullpage-center" id="PastSessionResult">
       <h1>This is your past image gerated by StableDiffusion</h1>
       <div className="Pastanswer">
-        <h1>Your anwser is..
-        <div className="past-image-result">
-        </div>
-        {promptText}
+        <h1>
+          Your anwser is..
+          <div className="past-image-result"></div>
+          {promptText}
         </h1>
         <br></br>
-        <img src={imageUrl}  crossOrigin="anonymous" />
+        <img src={imageUrl} crossOrigin="anonymous" />
       </div>
     </section>
   );
@@ -318,15 +318,14 @@ function FutureSession() {
   );
 }
 
-function FutureSessionResult({futureAnswers}) {
-  const [imageUrl, setImageUrl] = useState("")
-  const promptText =
-  'your future : ' + futureAnswers.join(", ") + 'futuristic';
-    fetch('http://localhost:4000/api/dreamstudio-image', {
-    method: 'POST',
+function FutureSessionResult({ futureAnswers }) {
+  const [imageUrl, setImageUrl] = useState("");
+  const promptText = "your future : " + futureAnswers.join(", ") + "futuristic";
+  fetch("http://localhost:4000/api/dreamstudio-image", {
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       prompt: promptText,
@@ -345,9 +344,9 @@ function FutureSessionResult({futureAnswers}) {
       <div className="future">
         <h1>Your anwser is..</h1>
         <div className="future-image-result">
-        {promptText}
-        <img id="image" src={imageUrl} crossOrigin="anonymous" />
-      </div>
+          {promptText}
+          <img id="image" src={imageUrl} crossOrigin="anonymous" />
+        </div>
       </div>
     </section>
   );
