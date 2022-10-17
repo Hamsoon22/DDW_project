@@ -19,6 +19,8 @@ export class AppService {
   constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) {}
 
   async listCache() {
+    await this.loadCacheFromFolder();
+
     // Get all keys
     const keys = await this.cacheManager.store.keys();
 
