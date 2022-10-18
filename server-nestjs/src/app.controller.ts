@@ -21,7 +21,7 @@ export class AppController {
   async getImages() {
     return this.appService
       .listCache()
-      .then((r) => shuffleArray(Object.keys(r)));
+      .then((r) => shuffleArray(Object.values(r)));
   }
 
   @Post('dreamstudio-image')
