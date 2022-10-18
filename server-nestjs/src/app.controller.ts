@@ -36,6 +36,7 @@ export class AppController {
     const imageRef = result.images[0];
     const fp = imageRef?.filePath;
 
-    return await this.appService.addCacheEntry(fp);
+    const result2 = await this.appService.addCacheEntry(fp);
+    return { serveUrl: result2 };
   }
 }
