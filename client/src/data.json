@@ -1,56 +1,54 @@
 {
-    "response_code": 0,
-    "results": [
-      {
-        "category": "aging and generational change",
-        "type": "past",
-        "question": "When you were younger, what did you imagine you’d be like when you grew older?",
-        "answer": null
-      },
-      {
-        "category": "data/privacy/technology",
-        "type": "past",
-        "question": "When you were younger, what kind of technology did you imagine would be popular in the future?",
-        "answer": null
-      },
-      {
-        "category": "mobility/transportation",
-        "type": "past",
-        "question": "When you were younger, how did you imagine getting around from place to place in the future?",
-        "answer": null
-      },
-      {
-        "category": "clothing and comfort (temperatures/climate change)",
-        "type": "past",
-        "question": "When you were younger, what did you imagine you would wear in the future?",
-        "answer": null
-      }
-    ],
-
-    "FutureResult": [
-      {
-        "category": "aging and generational change",
-        "type": "future",
-        "futurequestion": "How do you imagine your future self?",
-        "answer": null
-      },
-      {
-        "category": "data/privacy/technology",
-        "type": "future",
-        "futurequestion": "How do you imagine future technology in your everyday life?",
-        "answer": null
-      },
-      {
-        "category": "mobility/transportation",
-        "type": "future",
-        "futurequestion": "How do you imagine you will travel in the future?",
-        "answer": null
-      },
-      {
-        "category": "clothing and comfort (temperatures/climate change)",
-        "type": "future",
-        "futurequestion": "What do you imagine wearing in the future?",
-        "answer": null
-      }
-    ]
-  }
+  "pastResults": [
+    {
+      "category": "aging and generational change",
+      "type": "past",
+      "question": "When you were younger, what did you imagine you’d be like when you grew older?",
+      "answer": null
+    },
+    {
+      "category": "data/privacy/technology",
+      "type": "past",
+      "question": "When you were younger, what kind of technology did you imagine would be popular in the future?",
+      "answer": null
+    },
+    {
+      "category": "mobility/transportation",
+      "type": "past",
+      "question": "When you were younger, how did you imagine getting around from place to place in the future?",
+      "answer": null
+    },
+    {
+      "category": "clothing and comfort (temperatures/climate change)",
+      "type": "past",
+      "question": "When you were younger, what did you imagine you would wear in the future?",
+      "answer": null
+    }
+  ],
+  "futureResults": [
+    {
+      "category": "aging and generational change",
+      "type": "future",
+      "question": "How do you imagine your future self?",
+      "answer": null
+    },
+    {
+      "category": "data/privacy/technology",
+      "type": "future",
+      "question": "How do you imagine future technology in your everyday life?",
+      "answer": null
+    },
+    {
+      "category": "mobility/transportation",
+      "type": "future",
+      "question": "How do you imagine you will travel in the future?",
+      "answer": null
+    },
+    {
+      "category": "clothing and comfort (temperatures/climate change)",
+      "type": "future",
+      "question": "What do you imagine wearing in the future?",
+      "answer": null
+    }
+  ]
+}

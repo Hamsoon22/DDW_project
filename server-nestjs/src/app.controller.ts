@@ -21,7 +21,7 @@ export class AppController {
   async getImages() {
     return this.appService
       .listCache()
-      .then((r) => shuffleArray(Object.keys(r)));
+      .then((r) => shuffleArray(Object.values(r)));
   }
 
   @Post('dreamstudio-image')
@@ -36,7 +36,10 @@ export class AppController {
     const imageRef = result.images[0];
     const fp = imageRef?.filePath;
 
-    const result2 = await this.appService.addCacheEntry(fp);
-    return { serveUrl: result2 };
+    await this.appService.addCacheEntry(fp);
+
+    // TODO somehow something is already calling res.send
+    // The following has no impact (it's not returned)
+    return true;
   }
 }
