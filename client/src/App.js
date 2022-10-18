@@ -182,39 +182,6 @@ export function FutureQuestion({ result, index, onSubmit }) {
  *
  * @param {{result:{}, parentIndex:number}} props
  */
-// export function Answers({ result, parentIndex }) {
-//   const combinedAnswers = [...result.incorrect_answers, result.correct_answer];
-//   combinedAnswers.sort(); // Sort to alphabetical order
-//   return combinedAnswers.map((answer, index) => (
-//     <Answer
-//       key={index}
-//       answer={answer}
-//       index={index}
-//       parentIndex={parentIndex}
-//     />
-//   ));
-// }
-
-// function Answer({ answer, index, parentIndex }) {
-//   const { chosenAnswers, setChosenAnswers } = useAppContext();
-//   return (
-//     <Fragment>
-//       <input
-//         type="radio"
-//         name={`question-${parentIndex}`}
-//         onChange={element =>
-//           setChosenAnswers(
-//             handleChosenAnswer(element, parentIndex, chosenAnswers)
-//           )
-//         }
-//         value={index}
-//       />
-//       {renderHTML(answer)}
-//       <br />
-//     </Fragment>
-//   );
-// }
-
 /**
  * Saves me from writing type button over and over.
  *
@@ -245,7 +212,7 @@ function Start() {
 function PastSession() {
   return (
     <section className="fullpage-center" id="PastSession">
-      <h1>First, think about Your past</h1>
+      <h1>First, think about Your 'past'</h1>
       <h2>
         Think back to when you were younger.
         <br></br>What ideas or visions did you have of what the future might be
@@ -265,7 +232,7 @@ function PastSession() {
 function PastSessionResult({ pastAnswers }) {
   const [imageUrl, setImageUrl] = useState("");
   const promptText =
-    pastAnswers.join() + "in past";
+    pastAnswers.join(", ") + " " + "in past";
   const handleClick = () => {
     fetch("http://localhost:4000/api/dreamstudio-image", {
       method: "POST",
@@ -275,8 +242,8 @@ function PastSessionResult({ pastAnswers }) {
       },
       body: JSON.stringify({
         prompt: promptText,
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
       }),
     })
       .then((response) => response.json())
@@ -288,7 +255,7 @@ function PastSessionResult({ pastAnswers }) {
   return (
     <section className="fullpage-center" id="PastSessionResult">
       <div className="Pastanswer">
-        <h1>
+        <h3>
           This is your past image
           based on your anwser..
           <div className="past-image-result"></div>
@@ -297,7 +264,7 @@ function PastSessionResult({ pastAnswers }) {
           <button onClick={handleClick}>Show image</button>
           <br></br>
           <img src={imageUrl} crossOrigin="anonymous" />
-        </h1>
+        </h3>
       </div>
     </section>
   );
@@ -306,7 +273,7 @@ function PastSessionResult({ pastAnswers }) {
 function FutureSession() {
   return (
     <section className="fullpage-center" id="FutureSession">
-      <h1>Second, think about Your future</h1>
+      <h1>Second, think about Your 'future'</h1>
       <h2>
         Now think about the present.
         <br></br>What visions of a possible future motivate or affect you right
@@ -324,7 +291,7 @@ function FutureSession() {
 function FutureSessionResult({ futureAnswers }) {
   const [imageUrl, setImageUrl] = useState("");
   const promptText =
-  futureAnswers.join(" ") +  "in future";
+  futureAnswers.join(" , ") +  "in future";
   const handleClick = () => {
     fetch("http://localhost:4000/api/dreamstudio-image", {
       method: "POST",
@@ -334,8 +301,8 @@ function FutureSessionResult({ futureAnswers }) {
       },
       body: JSON.stringify({
         prompt: promptText,
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
       }),
     })
       .then((response) => response.json())
@@ -347,7 +314,7 @@ function FutureSessionResult({ futureAnswers }) {
   return (
     <section className="fullpage-center" id="FuturetSessionResult">
       <div className="future">
-        <h1>
+        <h3>
           This is your future image
           based on your anwser..
           <div className="future-image-result"></div>
@@ -356,7 +323,7 @@ function FutureSessionResult({ futureAnswers }) {
           <button onClick={handleClick}>Show image</button>
           <br></br>
           <img id="image" src={imageUrl} crossOrigin="anonymous" />
-        </h1>
+        </h3>
       </div>
     </section>
   );
