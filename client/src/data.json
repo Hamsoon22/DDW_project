@@ -25,29 +25,29 @@
       "answer": null
     }
   ],
-  "futureResult": [
+  "futureResults": [
     {
       "category": "aging and generational change",
       "type": "future",
-      "futurequestion": "How do you imagine your future self?",
+      "question": "How do you imagine your future self?",
       "answer": null
     },
     {
       "category": "data/privacy/technology",
       "type": "future",
-      "futurequestion": "How do you imagine future technology in your everyday life?",
+      "question": "How do you imagine future technology in your everyday life?",
       "answer": null
     },
     {
       "category": "mobility/transportation",
       "type": "future",
-      "futurequestion": "How do you imagine you will travel in the future?",
+      "question": "How do you imagine you will travel in the future?",
       "answer": null
     },
     {
       "category": "clothing and comfort (temperatures/climate change)",
       "type": "future",
-      "futurequestion": "What do you imagine wearing in the future?",
+      "question": "What do you imagine wearing in the future?",
       "answer": null
     }
   ]
