@@ -43,7 +43,7 @@ export function registerGlobals(app: NestExpressApplication) {
     defaultVersion: '1',
   });
 
-  app.useStaticAssets(join(__dirname, '../..', '.out'));
+  app.useStaticAssets(join(__dirname, '../../.out'));
 
   // API DTO validation using class-transformer
   app.useGlobalPipes(
