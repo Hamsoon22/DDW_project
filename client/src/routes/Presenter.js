@@ -2,8 +2,10 @@ import { listImages } from "../backend/app.service";
 import { useCallback, useEffect, useState } from "react";
 
 export const Presenter = () => {
-  const imgSizePx = 125;
+  const random = (null);
+  const imgSizePx = random;
   const refetchPeriodMs = 1500;
+
 
   const [images, setImages] = useState([]);
   const [images2, setImages2] = useState([]);
@@ -37,14 +39,14 @@ export const Presenter = () => {
   
   return (
     <>
-      <h2>Our past and future in total {images.length} images </h2>
+      <h2>Our past and future in total {images2.length} images </h2>
       <h3>How your past and future look like?</h3>
       <div className="imagemap">
       {images.map((i, index) => (
         <img className="image"
           src={i}
-          width={imgSizePx}
-          height={imgSizePx}
+          width={random}
+          height={random}
           key={index}
           crossOrigin="anonymous"
         />
@@ -54,8 +56,8 @@ export const Presenter = () => {
       {images2.map((i, index) => (
         <img
           src={i}
-          width={imgSizePx}
-          height={imgSizePx}
+          width={random}
+          height={random}
           key={index}
           crossOrigin="anonymous"
         />
