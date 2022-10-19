@@ -36,10 +36,9 @@ export class AppController {
     const imageRef = result.images[0];
     const fp = imageRef?.filePath;
 
-    await this.appService.addCacheEntry(fp);
-
     // TODO somehow something is already calling res.send
-    // The following has no impact (it's not returned)
-    return true;
+    // The following still has impact and it's not returned
+    const result2 = await this.appService.addCacheEntry(fp);
+    return result2;
   }
 }
