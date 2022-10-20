@@ -8,9 +8,14 @@ export const Presenter = () => {
 
   const loadImages = useCallback(() => {
     listImages().then((r) => {
-      const vals = r.map(
-        (rval) => `http://localhost:4000/${rval.serveUrl.replace("\\\\", "\\")}`
-      );
+      const vals = r
+        .map((rval) => {
+          return {
+            url: `http://localhost:4000/${rval.serveUrl.replace("\\\\", "\\")}`,
+            timestamp: new Date(rval.lastModified).valueOf()
+          };
+        })
+        .sort((x, y) => x.timestamp - y.timestamp);
       setImages(vals);
     });
   }, []);
@@ -27,9 +32,9 @@ export const Presenter = () => {
         Past and Future {images.length} images.
       </h2>
       <h3>Our Past and Future</h3>
-      {images.map((i, index) => (
+      {images.map((source, index) => (
         <img
-          src={i}
+          src={source.url}
           width={imgSizePx}
           height={imgSizePx}
           key={index}
