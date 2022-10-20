@@ -12,9 +12,9 @@ export function Question({ result, index, maxQuestions, onSubmit, questionPrefix
   return (
     <>
       <section id={`${questionPrefix}-${index}`} className="fullpage-center">
-        <h2>
+        <h3>
           {index + 1}.{renderHTML(result.question)}
-        </h2>
+        </h3>
         <div className="answer">
           Please answer with one or two words in English.
           <input
