@@ -11,7 +11,6 @@ export const Presenter = () => {
       const vals = r.map(
         (rval) => `http://localhost:4000/${rval.replace("\\\\", "\\")}`
       );
-      console.log(vals);
       setImages(vals);
     });
   }, []);
@@ -24,7 +23,9 @@ export const Presenter = () => {
 
   return (
     <>
-      <h2 className="presenter-title">Past and Future {images.length} images.</h2>
+      <h2 className="presenter-title">
+        Past and Future {images.length} images.
+      </h2>
       <h3>Our Past and Future</h3>
       {images.map((i, index) => (
         <img
