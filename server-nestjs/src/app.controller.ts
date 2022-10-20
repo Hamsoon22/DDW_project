@@ -32,7 +32,6 @@ export class AppController {
       apiKey: apiKey,
       width: 512,
       height: 512,
-
       ...input.options
     })) as { images: any[] };
 
