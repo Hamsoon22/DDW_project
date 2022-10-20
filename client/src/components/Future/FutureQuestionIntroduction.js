@@ -16,6 +16,7 @@ export function FutureQuestionIntroduction() {
         worry you), affecting the way you think about or approach the world.
         </p>
         </h2>
+        <br />
       <DButton text="Ok" func={() => scrollToElem("futurequestion-0")} />
     </section>
   );
