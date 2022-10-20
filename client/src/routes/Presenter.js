@@ -219,11 +219,6 @@ export const Presenter = () => {
 
   return (
     <>
-      <h2 className="presenter-title">
-        Past and Future {images.length} images.
-      </h2>
-      <h3>Our Past and Future</h3>
-      {!images.length ? "Loading your future" : ""}
       <div className="stage" ref={domElement} />
     </>
   );
