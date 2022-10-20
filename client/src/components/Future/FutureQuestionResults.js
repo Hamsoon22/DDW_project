@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getImage } from "../../backend/app.service";
 
 export function FutureSessionResults({ futureAnswers, anchor }) {
-  const promptText = futureAnswers?.join(" ") + "colorful" +  " " + "futuristic";
+  const promptText = futureAnswers?.join(" ") + " " +  "colorful" +  " " + "futuristic";
 
   const [imageUrl, setImageUrl] = useState("");
 
