@@ -11,11 +11,22 @@ function mod(v, l) {
 }
 
 export const Presenter = () => {
-  const imgSizePx = 200;
+  // YEUN CONTROL PANEL
+  const imgSizePx = 512;
   const refetchPeriodMs = 2500;
+  const allScaleFactor = 0.5;
+  // NEAREST IMAGES
   const nearSetSize = 6;
+  const nearOpacity = 1;
+  const nearScale = 1.2 * allScaleFactor;
+  // MID
   const midFarSetSize = 10;
+  const midFarOpacity = 0.9;
+  const midFarScale = 0.75 * allScaleFactor;
+  // FAR AWAY
   const farSetSize = 30;
+  const farOpacity = 0.5;
+  const farScale = 0.25 * allScaleFactor;
 
   const [imagesNear, setImagesNear] = useState([]);
   const [imagesMidFar, setImagesMidFar] = useState([]);
@@ -57,7 +68,7 @@ export const Presenter = () => {
   }, []);
 
   const references = {
-    square: new Two.Rectangle(0, 0, 256, 256),
+    square: new Two.Rectangle(0, 0, imgSizePx, imgSizePx),
   };
   const refs = useRef({
     active: null,
@@ -109,18 +120,24 @@ export const Presenter = () => {
     }
 
     const update = (frameCount) => {
-      const { active, velocity, spin, imagesNear, imagesMidFar, imagesFar } = refs.current;
+      const { active, velocity, spin, imagesNear, imagesMidFar, imagesFar } =
+        refs.current;
 
       // Draw everything immediately
-      if (imagesNear.length > 0 && imagesMidFar.length > 0 && imagesFar.length > 0 && two.scene.children.length === 0) {
-        imagesNear.forEach((i) => {
-          add(i.url);
+      if (
+        imagesNear.length > 0 &&
+        imagesMidFar.length > 0 &&
+        imagesFar.length > 0 &&
+        two.scene.children.length === 0
+      ) {
+        imagesFar.forEach((i) => {
+          add(i.url, farOpacity, farScale);
         });
         imagesMidFar.forEach((i) => {
-          add(i.url, 0.75);
+          add(i.url, midFarOpacity, midFarScale);
         });
-        imagesFar.forEach((i) => {
-          add(i.url, 0.75);
+        imagesNear.forEach((i) => {
+          add(i.url, nearOpacity, nearScale);
         });
       }
 
@@ -170,22 +187,24 @@ export const Presenter = () => {
       }
     }
 
-    function add(url) {
+    function add(url, opacity, scale) {
       const shapes = filterTruthy(refs.current.active.shapes);
       const index = Math.floor(Math.random() * shapes.length);
       const shape = shapes[index];
-      two.add(generate(shape, url));
+      two.add(generate(shape, url, opacity, scale));
     }
 
-    function generate(name, url) {
+    function generate(name, url, opacity, scale) {
       const ref = references[name];
       const path = ref.clone();
       path.position.x = two.width * Math.random();
       path.position.y = two.height * Math.random();
+      path.scale = scale;
 
       if (name === "square") {
         path.fill = !!url ? new Two.Texture(url) : fallBackTexture;
       }
+      path.opacity = opacity;
       path.stroke = "white";
       return path;
     }
