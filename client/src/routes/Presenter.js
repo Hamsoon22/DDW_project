@@ -16,7 +16,7 @@ export const Presenter = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       loadImages();
     }, refetchPeriodMs);
   }, []);
