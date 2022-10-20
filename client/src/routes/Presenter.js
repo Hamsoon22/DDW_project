@@ -13,7 +13,7 @@ function mod(v, l) {
 export const Presenter = () => {
   // YEUN CONTROL PANEL
   const imgSizePx = 512;
-  const refetchPeriodMs = 2500;
+  const refetchPeriodMs = 5000;
   const allScaleFactor = 0.5;
   // NEAREST IMAGES
   const nearSetSize = 6;
@@ -28,9 +28,7 @@ export const Presenter = () => {
   const farOpacity = 0.5;
   const farScale = 0.25 * allScaleFactor;
 
-  const [imagesNear, setImagesNear] = useState([]);
-  const [imagesMidFar, setImagesMidFar] = useState([]);
-  const [imagesFar, setImagesFar] = useState([]);
+  const [images, setImages] = useState([]);
 
   const loadImages = useCallback(() => {
     listImages().then((r) => {
@@ -43,25 +41,16 @@ export const Presenter = () => {
         })
         .sort((x, y) => x.timestamp - y.timestamp);
 
-      const cnt = vals.length;
-      const chunkNear = vals.slice(cnt - nearSetSize, cnt);
-      setImagesNear(chunkNear);
-
-      const midEnd = cnt - nearSetSize;
-      const chunkMidFar = vals.slice(midEnd - midFarSetSize, midEnd);
-      setImagesMidFar(chunkMidFar);
-
-      const farEnd = midEnd - midFarSetSize;
-      const chunkFar = vals.slice(farEnd - farSetSize, farEnd);
-      setImagesFar(chunkFar);
+      setImages(vals);
     });
-  }, [setImagesNear, setImagesMidFar, setImagesFar]);
+  }, [setImages]);
 
   const fallBackTexture = new Two.Texture(
     "https://raw.githubusercontent.com/jonobr1/two.js/dev/tests/images/canvas/image-sequence-2%402x.png"
   );
 
   useEffect(() => {
+    loadImages();
     setInterval(() => {
       loadImages();
     }, refetchPeriodMs);
@@ -72,9 +61,7 @@ export const Presenter = () => {
   };
   const refs = useRef({
     active: null,
-    imagesNear: [],
-    imagesMidFar: [],
-    imagesFar: [],
+    images: [],
     velocity: new Two.Vector(0.1, 0),
     spin: Math.PI / 30,
   });
@@ -91,22 +78,12 @@ export const Presenter = () => {
     },
   });
 
-  useEffect(setup, [
-    imagesNear,
-    imagesFar,
-    imagesMidFar,
-    fallBackTexture,
-    farScale,
-    nearScale,
-    midFarScale,
-  ]);
   useEffect(() => {
-    // Keep a reference to our state object
     refs.current.active = active;
-    refs.current.imagesNear = imagesNear;
-    refs.current.imagesMidFar = imagesMidFar;
-    refs.current.imagesFar = imagesFar;
-  }, [active, imagesNear, imagesMidFar, imagesFar]);
+    refs.current.images = images;
+  }, [active, images]);
+
+  useEffect(setup, [fallBackTexture, farScale, nearScale, midFarScale]);
 
   function setup() {
     let frameCount = 0;
@@ -128,8 +105,14 @@ export const Presenter = () => {
     }
 
     const update = (frameCount) => {
-      const { active, velocity, spin, imagesNear, imagesMidFar, imagesFar } =
-        refs.current;
+      const { active, velocity, spin, images } = refs.current;
+
+      const cnt = images.length;
+      const imagesNear = images.slice(cnt - nearSetSize, cnt);
+      const midEnd = cnt - nearSetSize;
+      const imagesMidFar = images.slice(midEnd - midFarSetSize, midEnd);
+      const farEnd = midEnd - midFarSetSize;
+      const imagesFar = images.slice(farEnd - farSetSize, farEnd);
 
       // Draw everything immediately
       if (
@@ -237,10 +220,10 @@ export const Presenter = () => {
   return (
     <>
       <h2 className="presenter-title">
-        Past and Future {imagesFar.length} images.
+        Past and Future {images.length} images.
       </h2>
       <h3>Our Past and Future</h3>
-      {!imagesNear.length ? "Loading your future" : ""}
+      {!images.length ? "Loading your future" : ""}
       <div className="stage" ref={domElement} />
     </>
   );

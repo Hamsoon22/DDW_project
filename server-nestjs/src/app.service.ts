@@ -23,6 +23,7 @@ export class AppService {
 
     // Get all keys
     const keys = await this.cacheManager.store.keys();
+    this.logger.log(`Loaded ${keys.length} images from .out`);
 
     // Loop through keys and get data
     const allData: { [key: string]: any } = {};
