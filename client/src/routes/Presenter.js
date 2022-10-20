@@ -9,7 +9,7 @@ export const Presenter = () => {
   const loadImages = useCallback(() => {
     listImages().then((r) => {
       const vals = r.map(
-        (rval) => `http://localhost:4000/${rval.replace("\\\\", "\\")}`
+        (rval) => `http://localhost:4000/${rval.serveUrl.replace("\\\\", "\\")}`
       );
       setImages(vals);
     });
