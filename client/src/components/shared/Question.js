@@ -45,6 +45,7 @@ export function Question({ result, index, maxQuestions, onSubmit, questionPrefix
             <DButton
               text="finish"
               func={() => {
+                onSubmit(data);
                 scrollToElem(resultElementId);
               }}
             />
