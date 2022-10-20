@@ -6,6 +6,7 @@ import { Question } from "../components/shared/Question";
 import { PastQuestionResults } from "../components/Past/PastQuestionResults";
 import { FutureQuestionIntroduction } from "../components/Future/FutureQuestionIntroduction";
 import { FutureSessionResults } from "../components/Future/FutureQuestionResults";
+import { Finish } from "../components/Finished";
 
 export const QuestionForm = () => {
   const pastResultMap = data.pastResults;
@@ -66,6 +67,7 @@ export const QuestionForm = () => {
         anchor={"futureSessionResults"}
         futureAnswers={futureAnswers}
       />
+      <Finish></Finish>
     </>
   );
 };

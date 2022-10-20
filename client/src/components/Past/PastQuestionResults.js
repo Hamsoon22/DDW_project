@@ -4,7 +4,7 @@ import { scrollToElem } from "../../utilities";
 import DButton from "../shared/DButton";
 
 export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
-  const promptText = pastAnswers?.join(" ") + "in the past";
+  const promptText = pastAnswers?.join(" ") + "sepia " + "in the past";
 
   const [imageUrl, setImageUrl] = useState("");
 
@@ -17,7 +17,7 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   return (
     <section className="fullpage-center" id={anchor}>
       <div>
-        <h1>
+        <h2>
           This is your past image based on your anwsers...
           <div className="past-image-result"></div>
           {promptText}
@@ -25,8 +25,9 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
           <button onClick={handleClick}>Load AI generated image</button>
           <br />
           <img src={imageUrl} crossOrigin="anonymous" />
-        </h1>
-        <DButton text="Let's continue with your future!" func={() => scrollToElem(nextAnchor)} />
+          <br />
+          <DButton text="Let's continue with your future!" func={() => scrollToElem(nextAnchor)} />
+        </h2>
       </div>
     </section>
   );

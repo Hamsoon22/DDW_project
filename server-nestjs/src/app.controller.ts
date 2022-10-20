@@ -1,11 +1,11 @@
-import { Body, Controller, Get, Post, VERSION_NEUTRAL } from '@nestjs/common';
-import { AppService } from '@/app.service';
-import { ApiTags } from '@nestjs/swagger';
-import { ConfigService } from '@nestjs/config';
-import { dreamStudioApiKeyToken } from '@/app.constants';
-import { generateAsync } from 'stability-client';
-import { RequestImageDto } from '@/dto/request-image.dto';
-import { shuffleArray } from '@/utils/random.utils';
+import { Body, Controller, Get, Post, VERSION_NEUTRAL } from "@nestjs/common";
+import { AppService } from "@/app.service";
+import { ApiTags } from "@nestjs/swagger";
+import { ConfigService } from "@nestjs/config";
+import { dreamStudioApiKeyToken } from "@/app.constants";
+import { generateAsync } from "stability-client";
+import { RequestImageDto } from "@/dto/request-image.dto";
+import { shuffleArray } from "@/utils/random.utils";
 
 @ApiTags('Root')
 @Controller({
@@ -36,9 +36,6 @@ export class AppController {
     const imageRef = result.images[0];
     const fp = imageRef?.filePath;
 
-    // TODO somehow something is already calling res.send
-    // The following still has impact and it's not returned
-    const result2 = await this.appService.addCacheEntry(fp);
-    return result2;
+    return await this.appService.addCacheEntry(fp);
   }
 }

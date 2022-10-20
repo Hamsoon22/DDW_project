@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getImage } from "../../backend/app.service";
 
 export function FutureSessionResults({ futureAnswers, anchor }) {
-  const promptText = futureAnswers?.join(" ") + "in future";
+  const promptText = futureAnswers?.join(" ") + "colorful" +  " " + "futuristic";
 
   const [imageUrl, setImageUrl] = useState("");
 
@@ -13,18 +13,20 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
   };
 
   return (
-    <section className="fullpage-center" id={anchor}>
+    <><section className="fullpage-center" id={anchor}>
       <div className="future">
-        <h1>
-          This is your future image based on your anwser..
-          <div className="future-image-result"></div>
+      <h2>
+          This is your past image based on your anwsers...
+          <div className="past-image-result"></div>
           {promptText}
-          <br></br>
-          <button onClick={handleClick}>Show image</button>
-          <br></br>
-          <img id="image" src={imageUrl} crossOrigin="anonymous" />
-        </h1>
+          <br />
+          <button onClick={handleClick}>Load AI generated image</button>
+          <br />
+          <img src={imageUrl} crossOrigin="anonymous" />
+          <br />
+        </h2>
       </div>
     </section>
+    </>
   );
 }
