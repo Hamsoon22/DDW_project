@@ -15,16 +15,22 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
   return (
     <><section className="fullpage-center" id={anchor}>
       <div className="future">
-      <h2>
+          <h3>
           This is your past image based on your anwsers...
           <div className="past-image-result"></div>
+          </h3>
+          <div className="promptText">
+          <p>
           {promptText}
+          </p>
+          </div>
           <br />
+          <h3>
           <button onClick={handleClick}>Load AI generated image</button>
           <br />
           <img src={imageUrl} crossOrigin="anonymous" />
           <br />
-        </h2>
+          </h3>
       </div>
     </section>
     </>

@@ -20,15 +20,17 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
         <h3>
           This is your past image based on your anwsers...
           <div className="past-image-result"></div>
-          <p>
+          </h3>
+         <div className="promptText"><p>
           {promptText}
           </p>
+          </div>
+          <h3>
           <button onClick={handleClick}>Load AI generated image</button>
           <br />
           <img src={imageUrl} crossOrigin="anonymous" />
-          <br />
           <DButton text="Let's continue with your future!" func={() => scrollToElem(nextAnchor)} />
-        </h3>
+          </h3>
       </div>
     </section>
   );

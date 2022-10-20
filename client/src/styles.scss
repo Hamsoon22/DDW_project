@@ -83,7 +83,7 @@ button {
   color: #333;
   font-size: 1.2rem;
   margin-top: 10px;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1rem;
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   border: none;
@@ -98,10 +98,6 @@ button {
   margin-left: 20px;
 }
 
-.img.image {
-  position: relative;
-  height: 250px;
-  margin-top: 100px;
-  overflow: hidden;
-  z-index: 1;
+.promptText{
+  text-align: center;
 }
