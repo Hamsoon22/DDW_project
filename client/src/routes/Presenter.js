@@ -1,6 +1,7 @@
 import { listImages } from "../backend/app.service";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Two from "two.js";
+import { filterTruthy } from "./TwoUtils";
 
 function mod(v, l) {
   while (v < 0) {
@@ -16,33 +17,58 @@ export const Presenter = () => {
   const midFarSetSize = 10;
   const farSetSize = 30;
 
-  const radius = 25;
+  const [imagesNear, setImagesNear] = useState([]);
+  const [imagesMidFar, setImagesMidFar] = useState([]);
+  const [imagesFar, setImagesFar] = useState([]);
+
+  const loadImages = useCallback(() => {
+    listImages().then((r) => {
+      const vals = r
+        .map((rval) => {
+          return {
+            url: `http://localhost:4000/${rval.serveUrl.replace("\\\\", "\\")}`,
+            timestamp: new Date(rval.lastModified).valueOf(),
+          };
+        })
+        .sort((x, y) => x.timestamp - y.timestamp);
+
+      const cnt = vals.length;
+      const chunkNear = vals.slice(cnt - nearSetSize, cnt);
+      setImagesNear(chunkNear);
+
+      const midEnd = cnt - nearSetSize;
+      const chunkMidFar = vals.slice(midEnd - midFarSetSize, midEnd);
+      setImagesMidFar(chunkMidFar);
+
+      const farEnd = midEnd - midFarSetSize;
+      const chunkFar = vals.slice(farEnd - farSetSize, farEnd);
+      setImagesFar(chunkFar);
+    });
+  }, [setImagesNear, setImagesMidFar, setImagesFar]);
+
+  const texture = new Two.Texture(
+    "https://raw.githubusercontent.com/jonobr1/two.js/dev/tests/images/canvas/image-sequence-2%402x.png"
+  );
+
+  useEffect(() => {
+    setInterval(() => {
+      loadImages();
+    }, refetchPeriodMs);
+  }, []);
 
   const references = {
-    triangle: new Two.Polygon(0, 0, radius, 3),
-    circle: new Two.Circle(0, 0, radius),
-    square: new Two.Rectangle(0, 0, radius * 2, radius * 2),
-    pentagon: new Two.Polygon(0, 0, radius, 5),
-    star: new Two.Star(0, 0, radius * 0.5, radius, 6),
+    square: new Two.Rectangle(0, 0, 200, 200),
   };
   const refs = useRef({
-    type: Two.Types.webgl,
-    increment: false,
-    decrement: false,
     active: null,
-    count: 0,
+    imagesNear: [],
     velocity: new Two.Vector(0.1, 0),
     spin: Math.PI / 30,
   });
   const domElement = useRef();
-  const [type, setType] = useState(Two.Types.svg);
-  const [active, setActive] = useState({
+  const [active] = useState({
     shapes: {
-      triangle: true,
-      circle: false,
-      square: false,
-      pentagon: false,
-      star: false,
+      square: true,
     },
     operations: {
       position: true,
@@ -51,27 +77,23 @@ export const Presenter = () => {
       vertices: false,
     },
   });
-  const [count, setCount] = useState(10);
 
   useEffect(setup, []);
   useEffect(() => {
     // Keep a reference to our state object
-    refs.current.type = type;
     refs.current.active = active;
-    refs.current.count = count;
-  }, [type, active, count]);
+    refs.current.imagesNear = imagesNear;
+  }, [active, imagesNear]);
 
   function setup() {
     let frameCount = 0;
     let playing = true;
     let two = new Two({
       fullscreen: true,
+      type: Two.Types.canvas
     }).appendTo(domElement.current);
 
     window.addEventListener("pointerup", ignore, false);
-    requestAnimationFrame(animate);
-
-    return unmount;
 
     function unmount() {
       playing = false;
@@ -82,33 +104,14 @@ export const Presenter = () => {
       }
     }
 
-    function animate() {
-      update(frameCount++);
-      two.render();
-      if (playing) {
-        requestAnimationFrame(animate);
-      }
-    }
-
-    function update(frameCount) {
-      if (refs.current.type !== two.type) {
-        change(refs.current.type);
-      }
-
-      if (refs.current.increment) {
-        setCount(increment);
-      }
-      if (refs.current.decrement) {
-        setCount(decrement);
-      }
-
-      const { count, active, velocity, spin } = refs.current;
-
-      if (count > two.scene.children.length) {
+    const update = (frameCount) => {
+      const { active, velocity, spin, imagesNear } = refs.current;
+      if (imagesNear.length > two.scene.children.length) {
         add();
-      } else if (count < two.scene.children.length) {
-        remove();
       }
+      // else if (count < two.scene.children.length) {
+      //   remove();
+      // }
 
       let needsUpdate = false;
       for (const operation in active.operations) {
@@ -146,24 +149,7 @@ export const Presenter = () => {
           modify(child);
         }
       }
-    }
-
-    function change(type) {
-      const parent = two.renderer.domElement.parentElement;
-      if (parent) {
-        parent.removeChild(two.renderer.domElement);
-      }
-
-      const index = Two.Instances.indexOf(two);
-      if (index >= 0) {
-        Two.Instances.splice(index, 1);
-      }
-
-      two = new Two({
-        type,
-        fullscreen: true,
-      }).appendTo(domElement.current);
-    }
+    };
 
     function modify(child) {
       for (let i = 0; i < child.vertices.length; i++) {
@@ -183,88 +169,42 @@ export const Presenter = () => {
     }
 
     function add() {
-      const shapes = filter(refs.current.active.shapes);
+      const shapes = filterTruthy(refs.current.active.shapes);
       const index = Math.floor(Math.random() * shapes.length);
       const shape = shapes[index];
       two.add(generate(shape));
     }
 
-    function remove() {
-      const child = two.scene.children[0];
-      if (child) {
-        child.remove();
-        two.release(child); // Dispose of any references
-      }
-    }
-
-    function generate(name) {
+    function generate(name, url) {
       const ref = references[name];
       const path = ref.clone();
       path.position.x = two.width * Math.random();
       path.position.y = two.height * Math.random();
-      path.rotation = Math.random() * Math.PI * 2;
-      path.fill = getRandomColor();
+
+      if (name === "square") {
+        path.fill =
+          imagesNear.length > 0 ? new Two.Texture(imagesNear[0].url) : texture;
+      }
       path.stroke = "white";
       return path;
     }
 
-    function getRandomColor() {
-      const red = Math.floor(Math.random() * 255);
-      const green = Math.floor(Math.random() * 255);
-      const blue = Math.floor(Math.random() * 255);
-      return `rgb(${red}, ${green}, ${blue})`;
-    }
-
-    function filter(obj) {
-      const result = [];
-      for (const k in obj) {
-        if (!!obj[k]) {
-          result.push(k);
-        }
+    const animate = () => {
+      update(frameCount++);
+      two.render();
+      if (playing) {
+        requestAnimationFrame(animate);
       }
-      return result;
-    }
+    };
+
+    requestAnimationFrame(animate);
+    return unmount;
   }
 
   function ignore() {
     refs.current.increment = false;
     refs.current.decrement = false;
   }
-
-  const [imagesNear, setImagesNear] = useState([]);
-  const [imagesMidFar, setImagesMidFar] = useState([]);
-  const [imagesFar, setImagesFar] = useState([]);
-
-  const loadImages = useCallback(() => {
-    listImages().then((r) => {
-      const vals = r
-        .map((rval) => {
-          return {
-            url: `http://localhost:4000/${rval.serveUrl.replace("\\\\", "\\")}`,
-            timestamp: new Date(rval.lastModified).valueOf(),
-          };
-        })
-        .sort((x, y) => x.timestamp - y.timestamp);
-
-      const cnt = vals.length;
-      const chunkNear = vals.slice(cnt - nearSetSize, cnt);
-      setImagesNear(chunkNear);
-
-      const midEnd = cnt - nearSetSize;
-      const chunkMidFar = vals.slice(midEnd - midFarSetSize, midEnd);
-      setImagesMidFar(chunkMidFar);
-
-      const farEnd = midEnd - midFarSetSize;
-      const chunkFar = vals.slice(farEnd - farSetSize, farEnd);
-      setImagesFar(chunkFar);
-    });
-  }, [setImagesNear, setImagesMidFar, setImagesFar]);
-
-  useEffect(() => {
-    setInterval(() => {
-      loadImages();
-    }, refetchPeriodMs);
-  }, []);
 
   return (
     <>
