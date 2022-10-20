@@ -10,6 +10,9 @@ export function Finish() {
       Check others past and future images on the screen</h3>
       <DButton text="start over" func={() => {
       scrollToElem("start")
+      setTimeout(function() {
+       window.location.reload();
+      }, 1500);
       }}
       />
     </section>
