@@ -31,7 +31,7 @@ export function configureSwagger() {
 
 export function registerGlobals(app: NestExpressApplication) {
   // Common security policies like HSTS
-  app.use(helmet());
+  // app.use(helmet());
 
   // SPA cross-origin capabilities without policy
   app.enableCors();

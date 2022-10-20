@@ -8,8 +8,7 @@ export async function getImage(promptText, width = 200, height = 200) {
       },
       body: JSON.stringify({
         prompt: promptText,
-        width: 200,
-        height: 200,
+        // forced size 256*256
       }),
     })
   ).text();
