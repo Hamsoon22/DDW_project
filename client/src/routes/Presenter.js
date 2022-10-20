@@ -91,7 +91,15 @@ export const Presenter = () => {
     },
   });
 
-  useEffect(setup, []);
+  useEffect(setup, [
+    imagesNear,
+    imagesFar,
+    imagesMidFar,
+    fallBackTexture,
+    farScale,
+    nearScale,
+    midFarScale,
+  ]);
   useEffect(() => {
     // Keep a reference to our state object
     refs.current.active = active;
