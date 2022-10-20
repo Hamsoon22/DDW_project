@@ -25,6 +25,7 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
           <button onClick={handleClick}>Load AI generated image</button>
           <br />
           <img src={imageUrl} crossOrigin="anonymous" />
+          <br />
           <DButton text="Let's continue with your future!" func={() => scrollToElem(nextAnchor)} />
         </h2>
       </div>

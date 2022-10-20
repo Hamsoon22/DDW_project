@@ -1,3 +1,5 @@
+
+
 :root {
   --font: "EB Garamond", serif;
   --font-title: "Playfair Display", serif;
@@ -78,6 +80,15 @@ button {
   transition: all 0.3s;
 }
 
-.image{
-  margin-right: 20px;
+
+.presenter-title{
+  margin-left: 20px;
+}
+
+.img.image {
+  position: relative;
+  height: 250px;
+  margin-top: 100px;
+  overflow: hidden;
+  z-index: 1;
 }

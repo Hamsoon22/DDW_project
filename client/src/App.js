@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QuestionForm } from "./routes/QuestionForm";
 import { Presenter } from "./routes/Presenter";
-import "./styles.css";
+import "./styles.scss";
 
 const App = () => {
   return (
