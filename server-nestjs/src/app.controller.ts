@@ -30,6 +30,8 @@ export class AppController {
     const result = (await generateAsync({
       prompt: input.prompt,
       apiKey: apiKey,
+      width: 256,
+      height: 256,
 
       ...input.options
     })) as { images: any[] };

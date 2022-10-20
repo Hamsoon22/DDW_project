@@ -46,7 +46,7 @@ export const Presenter = () => {
     });
   }, [setImagesNear, setImagesMidFar, setImagesFar]);
 
-  const texture = new Two.Texture(
+  const fallBackTexture = new Two.Texture(
     "https://raw.githubusercontent.com/jonobr1/two.js/dev/tests/images/canvas/image-sequence-2%402x.png"
   );
 
@@ -57,11 +57,13 @@ export const Presenter = () => {
   }, []);
 
   const references = {
-    square: new Two.Rectangle(0, 0, 200, 200),
+    square: new Two.Rectangle(0, 0, 256, 256),
   };
   const refs = useRef({
     active: null,
     imagesNear: [],
+    imagesMidFar: [],
+    imagesFar: [],
     velocity: new Two.Vector(0.1, 0),
     spin: Math.PI / 30,
   });
@@ -83,7 +85,9 @@ export const Presenter = () => {
     // Keep a reference to our state object
     refs.current.active = active;
     refs.current.imagesNear = imagesNear;
-  }, [active, imagesNear]);
+    refs.current.imagesMidFar = imagesMidFar;
+    refs.current.imagesFar = imagesFar;
+  }, [active, imagesNear, imagesMidFar, imagesFar]);
 
   function setup() {
     let frameCount = 0;
@@ -105,12 +109,18 @@ export const Presenter = () => {
     }
 
     const update = (frameCount) => {
-      const { active, velocity, spin, imagesNear } = refs.current;
+      const { active, velocity, spin, imagesNear, imagesMidFar, imagesFar } = refs.current;
 
       // Draw everything immediately
-      if (imagesNear.length > 0 &&  two.scene.children.length === 0) {
+      if (imagesNear.length > 0 && imagesMidFar.length > 0 && imagesFar.length > 0 && two.scene.children.length === 0) {
         imagesNear.forEach((i) => {
           add(i.url);
+        });
+        imagesMidFar.forEach((i) => {
+          add(i.url, 0.75);
+        });
+        imagesFar.forEach((i) => {
+          add(i.url, 0.75);
         });
       }
 
@@ -174,7 +184,7 @@ export const Presenter = () => {
       path.position.y = two.height * Math.random();
 
       if (name === "square") {
-        path.fill = !!url ? new Two.Texture(url) : texture;
+        path.fill = !!url ? new Two.Texture(url) : fallBackTexture;
       }
       path.stroke = "white";
       return path;
