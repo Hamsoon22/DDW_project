@@ -8,7 +8,7 @@ function getYear() {
 export function Footer() {
     return (
         <div className="footer">
-            <div className="footer-text-style"> &copy;{getYear()} Powered by DOT, <a href path='https://prod.y-box.online/'
+            <div className="footer-text-style"> &copy;{getYear()} Powered by DOT, <a href='https://prod.y-box.online/'
             > Design Only Together</a>
             <strong className="ps-5">
             </strong>

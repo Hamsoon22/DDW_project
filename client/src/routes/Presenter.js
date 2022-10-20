@@ -65,7 +65,7 @@ export const Presenter = () => {
     setInterval(() => {
       loadImages();
     }, refetchPeriodMs);
-  }, []);
+  }, [loadImages]);
 
   const references = {
     square: new Two.Rectangle(0, 0, imgSizePx, imgSizePx),
