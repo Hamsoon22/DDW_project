@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Cache } from 'cache-manager';
 import { join, relative } from 'path';
-import { readdirSync } from 'fs';
+import { readdirSync, statSync } from 'fs';
 
 @Injectable({
   scope: Scope.DEFAULT,
@@ -33,8 +33,12 @@ export class AppService {
   }
 
   async addCacheEntry(filePath: string) {
+    const lastModified = statSync(filePath).mtime;
     const serveUrl = relative(this.servePath, filePath);
-    await this.cacheManager.set(serveUrl, serveUrl);
+    await this.cacheManager.set(serveUrl, {
+      serveUrl,
+      lastModified,
+    });
     return serveUrl;
   }
 

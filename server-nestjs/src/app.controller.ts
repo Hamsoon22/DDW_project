@@ -1,11 +1,11 @@
-import { Body, Controller, Get, Post, VERSION_NEUTRAL } from "@nestjs/common";
-import { AppService } from "@/app.service";
-import { ApiTags } from "@nestjs/swagger";
-import { ConfigService } from "@nestjs/config";
-import { dreamStudioApiKeyToken } from "@/app.constants";
-import { generateAsync } from "stability-client";
-import { RequestImageDto } from "@/dto/request-image.dto";
-import { shuffleArray } from "@/utils/random.utils";
+import { Body, Controller, Get, Post, VERSION_NEUTRAL } from '@nestjs/common';
+import { AppService } from '@/app.service';
+import { ApiTags } from '@nestjs/swagger';
+import { ConfigService } from '@nestjs/config';
+import { dreamStudioApiKeyToken } from '@/app.constants';
+import { generateAsync } from 'stability-client';
+import { RequestImageDto } from '@/dto/request-image.dto';
+import { shuffleArray } from '@/utils/random.utils';
 
 @ApiTags('Root')
 @Controller({
@@ -19,9 +19,9 @@ export class AppController {
 
   @Get()
   async getImages() {
-    return this.appService
-      .listCache()
-      .then((r) => shuffleArray(Object.values(r)));
+    return this.appService.listCache().then((r) => {
+      return Object.values(r);
+    });
   }
 
   @Post('dreamstudio-image')
