@@ -90,7 +90,7 @@ export const Presenter = () => {
     let playing = true;
     let two = new Two({
       fullscreen: true,
-      type: Two.Types.canvas
+      type: Two.Types.canvas,
     }).appendTo(domElement.current);
 
     window.addEventListener("pointerup", ignore, false);
@@ -106,12 +106,13 @@ export const Presenter = () => {
 
     const update = (frameCount) => {
       const { active, velocity, spin, imagesNear } = refs.current;
-      if (imagesNear.length > two.scene.children.length) {
-        add();
+
+      // Draw everything immediately
+      if (imagesNear.length > 0 &&  two.scene.children.length === 0) {
+        imagesNear.forEach((i) => {
+          add(i.url);
+        });
       }
-      // else if (count < two.scene.children.length) {
-      //   remove();
-      // }
 
       let needsUpdate = false;
       for (const operation in active.operations) {
@@ -159,20 +160,11 @@ export const Presenter = () => {
       }
     }
 
-    function increment(count) {
-      return count + 1;
-    }
-
-    function decrement(count) {
-      count = Math.max(count - 1, 0);
-      return count;
-    }
-
-    function add() {
+    function add(url) {
       const shapes = filterTruthy(refs.current.active.shapes);
       const index = Math.floor(Math.random() * shapes.length);
       const shape = shapes[index];
-      two.add(generate(shape));
+      two.add(generate(shape, url));
     }
 
     function generate(name, url) {
@@ -182,8 +174,7 @@ export const Presenter = () => {
       path.position.y = two.height * Math.random();
 
       if (name === "square") {
-        path.fill =
-          imagesNear.length > 0 ? new Two.Texture(imagesNear[0].url) : texture;
+        path.fill = !!url ? new Two.Texture(url) : texture;
       }
       path.stroke = "white";
       return path;
@@ -213,16 +204,6 @@ export const Presenter = () => {
       </h2>
       <h3>Our Past and Future</h3>
       {!imagesNear.length ? "Loading your future" : ""}
-      {imagesNear.map((source, index) => (
-        <span key={index}>
-          <img
-            src={source.url}
-            width={imgSizePx}
-            height={imgSizePx}
-            crossOrigin="anonymous"
-          />
-        </span>
-      ))}
       <div className="stage" ref={domElement} />
     </>
   );
