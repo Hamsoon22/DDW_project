@@ -7802,7 +7802,7 @@ sass-loader@^12.3.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@^1.55.0:
+sass@1.55.0:
   version "1.55.0"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.55.0.tgz#0c4d3c293cfe8f8a2e8d3b666e1cf1bff8065d1c"
   integrity sha512-Pk+PMy7OGLs9WaxZGJMn7S96dvlyVBwwtToX895WmCpAOr5YiJYEUJfiJidMuKb613z2xNWcXCHEuOvjZbqC6A==
@@ -8520,7 +8520,7 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-two.js@^0.8.10:
+two.js@0.8.10:
   version "0.8.10"
   resolved "https://registry.yarnpkg.com/two.js/-/two.js-0.8.10.tgz#d01f8bb1c9401f850730a79abb9784b900ccde0b"
   integrity sha512-Rg0jn1n/0MWdDBrW47L245GWlWpbWlJ3Cv8xFlP05pSFqUT0Wn6w4yaOcxUCzAJQGRGdtmXOW3UI2W0LEEUD9Q==
