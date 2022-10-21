@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Cache } from 'cache-manager';
 import { join, relative } from 'path';
-import { readdirSync, statSync } from 'fs';
+import {existsSync, mkdirSync, readdirSync, statSync} from 'fs';
 
 @Injectable({
   scope: Scope.DEFAULT,
@@ -44,6 +44,9 @@ export class AppService {
   }
 
   async loadCacheFromFolder() {
+    if (!existsSync(this.servePath)) {
+      mkdirSync(this.servePath);
+    }
     const contents = readdirSync(this.servePath);
 
     for (const dir of contents) {
