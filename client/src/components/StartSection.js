@@ -5,7 +5,7 @@ import DButton from "./shared/DButton";
 const StartSection = () => {
   return (
     <section className="fullpage-center" id="start">
-      <h1>How your past and future look like?</h1>
+      <h1>Dream Sequencer</h1>
       <h2>
         We are going to ask questions about your past and future.
         <br />
