@@ -117,8 +117,6 @@ export const Presenter = () => {
       // Draw everything immediately
       if (
         imagesNear.length > 0 &&
-        imagesMidFar.length > 0 &&
-        imagesFar.length > 0 &&
         two.scene.children.length === 0
       ) {
         imagesFar.forEach((i) => {
@@ -130,6 +128,9 @@ export const Presenter = () => {
         imagesNear.forEach((i) => {
           add(i.url, nearOpacity, nearScale);
         });
+      }
+      else {
+        console.log("Condition not met", two.scene.children.length, imagesFar.length, imagesMidFar.length, imagesNear.length);
       }
 
       let needsUpdate = false;
