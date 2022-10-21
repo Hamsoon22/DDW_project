@@ -16,7 +16,7 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
     <><section className="fullpage-center" id={anchor}>
       <div className="future">
           <h3>
-          This is your past image based on your anwsers...
+          This is your future image based on your answers...
           <div className="past-image-result"></div>
           </h3>
           <div className="promptText">
