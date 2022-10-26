@@ -63,10 +63,10 @@
   resolved "https://registry.yarnpkg.com/@automapper/classes/-/classes-8.7.7.tgz#2194ba66d4e7689bec23289b56efc5eb69358c9d"
   integrity sha512-FSbvt6QE8XnhKKQZA3kpKLuLrr9x1iW+lNYTrawVLjxQ05zsCGccLxe7moMNrg1wFAVAouQKupFgCGQ7XRjmJw==
 
-"@automapper/core@8.7.6":
-  version "8.7.6"
-  resolved "https://registry.yarnpkg.com/@automapper/core/-/core-8.7.6.tgz#ac59edb7fc7b0e7ccab3b896de2b3750b60679f3"
-  integrity sha512-btaewJ27PWjiulZmVFFwtSlHUyHp8Qifhy/3fI3RIEKmgjkiC/VqIwvjKjesdwsSI5S3zEJMlRQGMYi3L+igcg==
+"@automapper/core@8.7.7":
+  version "8.7.7"
+  resolved "https://registry.yarnpkg.com/@automapper/core/-/core-8.7.7.tgz#b48dd0260d188e6036fafd7ac03727d9295175ab"
+  integrity sha512-YfpDJ/xqwUuC0S+BLNk81ZJfeL7CmjirUX/Gk9eQyx146DKvneBZgeZ9v5rDB51Ti14jTxVHis+5JuT7W/q0TA==
 
 "@automapper/nestjs@8.7.7":
   version "8.7.7"
