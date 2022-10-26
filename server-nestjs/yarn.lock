@@ -68,10 +68,10 @@
   resolved "https://registry.yarnpkg.com/@automapper/core/-/core-8.7.6.tgz#ac59edb7fc7b0e7ccab3b896de2b3750b60679f3"
   integrity sha512-btaewJ27PWjiulZmVFFwtSlHUyHp8Qifhy/3fI3RIEKmgjkiC/VqIwvjKjesdwsSI5S3zEJMlRQGMYi3L+igcg==
 
-"@automapper/nestjs@8.7.6":
-  version "8.7.6"
-  resolved "https://registry.yarnpkg.com/@automapper/nestjs/-/nestjs-8.7.6.tgz#d84950978858128a933e2b601b30cb8c40c756d5"
-  integrity sha512-MqcETATU49L0kh1stj21H4l/wOuAam0CRbVB2unzwd2Br/ILS9SgpFJRMJID/pYzrGDs5SMm05QdvFcmRWOExw==
+"@automapper/nestjs@8.7.7":
+  version "8.7.7"
+  resolved "https://registry.yarnpkg.com/@automapper/nestjs/-/nestjs-8.7.7.tgz#797bca292f86e7b44530939f359aa8374b47629d"
+  integrity sha512-9/uYY2cmN7SJjr2QxnfyXsteHrn/RHD+Dg0VMBflzK/e8Bh/KWyOve7+kaFixlUoyHe44aXs2LVaCslqt8wnhQ==
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.18.6"
