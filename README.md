@@ -14,14 +14,14 @@ This app uses Stable Diffusion API from: https://github.com/Stability-AI/stabili
 
 ## Getting Started
 
-In the server folder : yarn run dev
-In the client folder : yarn start
+In the server folder : ``` yarn run dev ```
+In the client folder : ``` yarn start ```
 
 You should install yarn beforehand.
 
 ## Installation
 Create .env file in the server folder and put 
-``` DREAMSTUDIO_API_KEY= "Your token"
+``` DREAMSTUDIO_API_KEY= "Your token" ```
 You can pay for the token here : https://stabilityai.us.auth0.com/
 
 ## Authors
