@@ -1,6 +1,7 @@
 # Dream Sequencer Project by Design United 
 
 This project has been built by Yeun Kim and David Zwart for Dream Sequencer Project for Dutch Design Week 2022.
+
 Check out this website : https://www.4tu.nl/du/editions/TRANSITIONS/#futuring
 
 ## Description
