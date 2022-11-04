@@ -3228,10 +3228,10 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.yarnpkg.com/spdx-license-ids/-/spdx-license-ids-3.0.12.tgz#69077835abe2710b65f03969898b6637b505a779"
   integrity sha512-rr+VVSXtRhO4OHbXUiAF7xW3Bo9DuuF6C5jH+q/x15j2jniycgKbxU09Hr0WqlSLUs4i4ltHGXqTe7VHclYWyA==
 
-stability-client@1.6.1:
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/stability-client/-/stability-client-1.6.1.tgz#960250c8083119227d25972db662c873333f9a26"
-  integrity sha512-N5igY8YH1vT6T0p++GWbr1KHqeAyYO+/WGgrgsTeKk7bCTXLeQng8B9OWYOOAczb95iyvFXDdUCRj5Cry00iaA==
+stability-client@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/stability-client/-/stability-client-1.7.0.tgz#e06b4a304ce80745a09376f116cbba111b6f170c"
+  integrity sha512-iTZ8jKUugY1NczjhPTMblIYX77PNJ0tGQz4xD8Sd0kktYBnRuKwlHMeB9IQxI8zDtKY9d0JtyZsqGTy63RHymg==
   dependencies:
     "@improbable-eng/grpc-web" "^0.15.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.15.0"
