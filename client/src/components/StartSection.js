@@ -3,7 +3,6 @@ import React from "react";
 import { useState } from "react";
 import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
-import ReactCSSTransitionGroup from 'react-transition-group';
 
 const StartSection = () => {
   const [show, setShow] = useState(false)
