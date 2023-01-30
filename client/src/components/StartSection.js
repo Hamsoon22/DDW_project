@@ -4,8 +4,6 @@ import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
 
 const StartSection = () => {
-  const typeWriter = ["apples", "pears", "bananas"];
-
   return (
     <section className="fullpage-center" id="start">
       <h1>
@@ -18,7 +16,7 @@ const StartSection = () => {
         />
       </h1>
       <DButton text="click to continue" func={() =>
-        scrollToElem("PastSession")} />
+        scrollToElem("introdcution")} />
     </section>
   );
 };
