@@ -32,7 +32,6 @@ const StartSection = () => {
                 .pauseFor(1000)
                 .typeString("By clicking this button you consent to having your dreams saved in a database and posted on Instagram.")
                 .pauseFor(2000)
-                .deleteAll()
                 .start();
             }}
           />
