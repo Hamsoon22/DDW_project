@@ -1,6 +1,6 @@
 import { scrollToElem } from "../utilities";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
 import "./StartSection.scss";
@@ -38,8 +38,9 @@ const StartSection = () => {
       }
       { show ?
         <div className="fadeIn">
-          <DButton text="click to continue" func={() =>
-            scrollToElem("introdcution")} />
+          <DButton text="click to continue" func={() => 
+            scrollToElem("introdcution")
+            } />
         </div>: null
       }
     </section >
