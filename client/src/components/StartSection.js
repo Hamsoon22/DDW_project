@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
+import "./StartSection.scss";
 
 const StartSection = () => {
   const [visible, setVisible] = useState(false);
@@ -35,10 +36,11 @@ const StartSection = () => {
           />
         </h1>
       }
-      {
-        show ?
+      { show ?
+        <div className="fadeIn">
           <DButton text="click to continue" func={() =>
-            scrollToElem("introdcution")} /> : null
+            scrollToElem("introdcution")} />
+        </div>: null
       }
     </section >
   );
