@@ -1,12 +1,11 @@
 import { scrollToElem } from "../utilities";
 import React from "react";
 import DButton from "./shared/DButton";
-import { useState, useEffect } from "react";
 import Typewriter from 'typewriter-effect';
-import StartSection from "./StartSection";
 
-const Introduction = () => {
-  
+const Introduction = ({message}) => {
+  console.log(message);
+
   return (
     <section className="fullpage-center" id="introdcution">
       <h1>

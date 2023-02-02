@@ -9,6 +9,7 @@ const StartSection = () => {
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [show, setShow] = useState(false);
+  const [message, setMessage] = useState(false);
  
   return (
     <section className="fullpage-center" id="start">
@@ -39,7 +40,11 @@ const StartSection = () => {
       { show ?
         <div className="fadeIn">
           <DButton text="click to continue" func={() => 
+          {
             scrollToElem("introdcution")
+            setMessage(true)
+            console.log(message)
+          }
             } />
         </div>: null
       }
