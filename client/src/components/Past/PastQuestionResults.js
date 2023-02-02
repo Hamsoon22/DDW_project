@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { getImage } from "../../backend/app.service";
 import { scrollToElem } from "../../utilities";
 import DButton from "../shared/DButton";
+import "../StartSection.scss";
 
 export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   const promptText = pastAnswers?.join(" ")
@@ -11,14 +12,19 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = () => {
-    getImage(promptText).then((data) => {
+    setIsLoading(true);
+    getImage(promptText)
+    .then((data) => data.json())
+    .then((data) => {   
       setImageUrl(`http://localhost:4000/${data}`);
+      setIsLoading(false)  
     });
     setVisible(true);
     setHidden(true);
-    setTimeout(() => { setShow(true) }, 6000)
+    setTimeout(() => { setShow(true) }, 4000)
   };
 
   return (
@@ -32,16 +38,21 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
         </p>
         </div>
         <h3>
-          <button onClick={handleClick}>Load AI generated image</button>
+          Let’s paint the picture
+          <br></br>
+          {!hidden && <button onClick={handleClick} disabled={isLoading}>show me my past dream</button>}
           <br></br>
           <img src={imageUrl} crossOrigin="anonymous" />
+          {show ?
+            <div className="fadeIn">
+              <DButton text="Let's continue with your future!"
+                func={() => scrollToElem(nextAnchor)
+                } />
+            </div> : null
+          }
         </h3>
-        { show ?
-          <DButton text="Let's continue with your future!"
-            func={() => scrollToElem(nextAnchor)
-            } />:null
-        } 
       </div>
+
     </section>
   );
 }
