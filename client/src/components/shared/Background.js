@@ -22,11 +22,6 @@ export function Background() {
             init={particlesInit}
             loaded={particlesLoaded}
             options={{
-                background: {
-                    color: {
-                        value: "#000000",
-                    },
-                },
                 fpsLimit: 120,
                 interactivity: {
                     events: {
