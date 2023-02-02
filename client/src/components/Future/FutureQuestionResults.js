@@ -17,12 +17,12 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
     setIsLoading(true);
     getImage(promptText)
       .then((data) => {
-        // setImageUrl(`http://localhost:4000/${data}`);
+        setImageUrl(`http://localhost:4000/${data}`);
         setIsLoading(false)
       });
     setVisible(true);
     setHidden(true);
-    setTimeout(() => { setShow(true) }, 4000)
+    setTimeout(() => { setShow(true) }, 5000)
   };
 
   return (

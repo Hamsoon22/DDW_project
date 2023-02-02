@@ -3,6 +3,7 @@ import { getImage } from "../../backend/app.service";
 import { scrollToElem } from "../../utilities";
 import DButton from "../shared/DButton";
 import "../StartSection.scss";
+import LoadingSpinner from "../shared/LoadingSpinner"
 
 export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   const promptText = pastAnswers?.join(" ")
@@ -17,11 +18,10 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   const handleClick = () => {
     setIsLoading(true);
     getImage(promptText)
-    .then((data) => data.json())
-    .then((data) => {   
-      setImageUrl(`http://localhost:4000/${data}`);
-      setIsLoading(false)  
-    });
+      .then((data) => {
+        setImageUrl(`http://localhost:4000/${data}`);
+        setIsLoading(false)
+      });
     setVisible(true);
     setHidden(true);
     setTimeout(() => { setShow(true) }, 4000)
@@ -42,7 +42,14 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
           <br></br>
           {!hidden && <button onClick={handleClick} disabled={isLoading}>show me my past dream</button>}
           <br></br>
-          <img src={imageUrl} crossOrigin="anonymous" />
+          {isLoading ?
+            <>
+              <LoadingSpinner />
+            </>
+            : (
+              <img src={imageUrl} crossOrigin="anonymous" />
+            )
+          }
           {show ?
             <div className="fadeIn">
               <DButton text="Let's continue with your future!"
