@@ -7,6 +7,8 @@ import { PastQuestionResults } from "../components/Past/PastQuestionResults";
 import { FutureQuestionIntroduction } from "../components/Future/FutureQuestionIntroduction";
 import { FutureSessionResults } from "../components/Future/FutureQuestionResults";
 import { Finish } from "../components/Finished";
+import Introduction from "../components/Introduction";
+import Background from "../components/shared/Background";
 
 export const QuestionForm = () => {
   const pastResultMap = data.pastResults;
@@ -22,7 +24,9 @@ export const QuestionForm = () => {
 
   return (
     <>
+    <Background />
       <StartSection />
+      <Introduction />
       <PastQuestionIntroduction nextAnchor={"pastquestion-0"} />
       {pastResultMap.map((result, index) => (
         <Question

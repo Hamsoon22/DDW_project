@@ -12,7 +12,7 @@ export function Footer() {
             > Design Only Together</a>
             <strong className="ps-5">
             </strong>
-            , <a className="link" href='https://www.linkedin.com/in/yeun-kim-58a76218a/'>Designer : Yeun Kim</a> | <a className="link" href='https://www.linkedin.com/in/david-zwart-88514083/'>Developer : David Zwart</a>
+            , <a className="link" href='https://www.linkedin.com/in/yeun-kim-58a76218a/'>Designer : Yeun Kim</a>
         </div>
       </div >
     );

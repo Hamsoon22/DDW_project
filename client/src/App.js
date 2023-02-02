@@ -3,12 +3,15 @@ import { QuestionForm } from "./routes/QuestionForm";
 import { Presenter } from "./routes/Presenter";
 import { Footer } from "./components/Footer"
 import "./styles.scss";
+import Background from "./components/shared/Background";
+
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/background" element={<Background />}></Route>
           <Route path="/" element={<QuestionForm />}></Route>
           <Route path="/presenter" element={<Presenter />}></Route>
         </Routes>
