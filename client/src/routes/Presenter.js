@@ -2,6 +2,7 @@ import { listImages } from "../backend/app.service";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Two from "two.js";
 import { filterTruthy } from "./TwoUtils";
+import Background from "../components/shared/Background";
 
 function mod(v, l) {
   while (v < 0) {
@@ -220,6 +221,7 @@ export const Presenter = () => {
 
   return (
     <>
+    <Background />
       <div className="stage" ref={domElement} />
     </>
   );
