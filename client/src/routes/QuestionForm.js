@@ -22,11 +22,17 @@ export const QuestionForm = () => {
     futureResultMap.map(() => "")
   );
 
+  const [show, setShow] = useState(false);
+
+  function onContinue() {
+    setShow(true)
+  }
+
   return (
     <>
-    <Background />
-      <StartSection />
-      <Introduction />
+      <Background />
+      <StartSection onContinue={onContinue} />
+      <Introduction show={show} />
       <PastQuestionIntroduction nextAnchor={"pastquestion-0"} />
       {pastResultMap.map((result, index) => (
         <Question
