@@ -5,7 +5,7 @@ import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
 import "./StartSection.scss";
 
-const StartSection = () => {
+const StartSection = ({ onContinue }) => {
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [show, setShow] = useState(false);
@@ -43,7 +43,7 @@ const StartSection = () => {
           {
             scrollToElem("introdcution")
             setMessage(true)
-            console.log(message)
+            onContinue()
           }
             } />
         </div>: null
