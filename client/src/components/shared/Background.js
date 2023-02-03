@@ -40,14 +40,15 @@ export function Background() {
                             quantity: 4,
                         },
                         repulse: {
-                            distance: 200,
-                            duration: 0.4,
+                            distance: 1,
+                            duration: 0.2,
                         },
                     },
                 },
+
                 "particles": {
                     "number": {
-                        "value": 60,
+                        "value": 300,
                         "density": {
                             "enable": true,
                             "value_area": 1500
@@ -89,7 +90,6 @@ export function Background() {
             }}
         />
     );
-
 }
 
 export default Background;

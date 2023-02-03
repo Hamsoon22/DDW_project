@@ -1,22 +1,20 @@
 import DButton from "../shared/DButton";
 import { scrollToElem } from "../../utilities";
 import React from "react";
+import Typewriter from 'typewriter-effect';
 
 export function FutureQuestionIntroduction() {
   return (
     <section className="fullpage-center" id="futureSessionIntroduction">
-      <h1>Now,  think about the present.</h1>
-      <h2>
-        <br></br>What visions of a possible future motivate or affect you right
-        now?
-        <br></br>
-        <p>
-        These could be <strong>ideas, images, concepts, hopes, that are 'still to
-        happen'</strong> but nevertheless have a hold on you—inspire or motivate you (or
-        worry you), affecting the way you think about or approach the world.
-        </p>
-        </h2>
-        <br />
+      <h1>
+        <Typewriter
+          options={{
+            strings: 'Now take a moment to imagine your FUTURE.',
+            autoStart: true,
+            loop: true,
+          }}
+        />
+      </h1>
       <DButton text="Ok" func={() => scrollToElem("futurequestion-0")} />
     </section>
   );
