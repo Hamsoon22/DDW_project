@@ -4,6 +4,7 @@ import { scrollToElem } from "../../utilities";
 import DButton from "../shared/DButton";
 import "../StartSection.scss";
 import LoadingSpinner from "../shared/LoadingSpinner"
+import Typewriter from 'typewriter-effect';
 
 export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   const promptText = pastAnswers?.join(" ")
@@ -38,7 +39,13 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
         </p>
         </div>
         <h3>
-          Let’s paint the picture
+        <Typewriter
+            onInit={(typewriter) => {
+              typewriter
+                .typeString("Let's paint the picture")
+                .start();
+            }}
+          />
           <br></br>
           {!hidden && <button onClick={handleClick} disabled={isLoading}>show me my past dream</button>}
           <br></br>

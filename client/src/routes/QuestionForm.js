@@ -32,8 +32,8 @@ export const QuestionForm = () => {
     <>
       <Background />
       <StartSection onContinue={onContinue} />
-      <Introduction show={show} />
-      <PastQuestionIntroduction nextAnchor={"pastquestion-0"} />
+      <Introduction show={show} onContinue={onContinue} />
+      <PastQuestionIntroduction nextAnchor={"pastquestion-0"} show={show} onContinue={onContinue}/>
       {pastResultMap.map((result, index) => (
         <Question
           questionPrefix={"pastquestion"}

@@ -8,15 +8,14 @@ import "./StartSection.scss";
 const StartSection = ({ onContinue }) => {
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [show, setShow] = useState(false);
-  const [message, setMessage] = useState(false);
+  const [showButton, setButtonShow] = useState(false);
  
   return (
     <section className="fullpage-center" id="start">
       {!hidden && <button onClick={() => {
         setVisible(true);
         setHidden(true);
-        setTimeout(() => { setShow(true) }, 30000)
+        setTimeout(() => { setButtonShow(true) }, 30000)
       }}>
         Click to Start
       </button>
@@ -37,12 +36,11 @@ const StartSection = ({ onContinue }) => {
           />
         </h1>
       }
-      { show ?
+      { showButton ?
         <div className="fadeIn">
           <DButton text="click to continue" func={() => 
           {
             scrollToElem("introdcution")
-            setMessage(true)
             onContinue()
           }
             } />

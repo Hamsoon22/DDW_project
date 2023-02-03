@@ -2,9 +2,11 @@ import { scrollToElem } from "../utilities";
 import React from "react";
 import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
+import { useState } from "react";
 
-const Introduction = ({ show }) => {
-
+const Introduction = ({ show, onContinue }) => {
+  const [showButton, setButtonShow] = useState(false);
+  
   return (
     <section className="fullpage-center" id="introdcution">
       <h1>
@@ -12,6 +14,8 @@ const Introduction = ({ show }) => {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
+                .pauseFor(500)
+                .start()
                 .typeString("Much of what we used to dream about in the past continues to influence our present and ")
                 .pauseFor(1000)
                 .typeString("by extension, to shape our future. ")
@@ -20,13 +24,17 @@ const Introduction = ({ show }) => {
                 .pauseFor(1000)
                 .typeString("Animated by Generative AI.")
                 .pauseFor(2000)
-                .start();
             }}
           />
+
+
         }
       </h1>
-      <DButton text="click to continue" func={() =>
-        scrollToElem("PastSession")} />
+      <DButton text="click to continue" func={() => {
+        scrollToElem("PastSession")
+        onContinue()
+      }
+        } />
     </section>
   );
 };
