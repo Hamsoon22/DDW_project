@@ -29,7 +29,7 @@ You can pay for the token here : https://stabilityai.us.auth0.com/
 
 ## Authors
 
-Yeun Kim : yeunkim@designonlytogether
+Yeun Kim : yeunkim@designonlytogether.com | https://www.linkedin.com/in/yeun-kim-58a76218a/
 
 David Zwart : https://www.linkedin.com/in/david-zwart-88514083/
 
