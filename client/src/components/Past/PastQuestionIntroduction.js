@@ -7,11 +7,11 @@ export function PastQuestionIntroduction({ nextAnchor }) {
   return (
     <section className="fullpage-center" id="PastSession">
       <h1>
-        <Typewriter
+         <Typewriter
           options={{
             strings: 'Take a moment to think about the PAST and remind yourself of the things you dreamed of when you were younger.',
             autoStart: true,
-            loop: true,
+            loop: false,
           }}
         />
       </h1>

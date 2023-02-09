@@ -24,15 +24,11 @@ const StartSection = ({ onContinue }) => {
       {visible &&
         <h1>
           <Typewriter
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("Welcome! ")
-                .pauseFor(1000)
-                .typeString("The Dream Sequencer collects anonymous data including text and images. ")
-                .pauseFor(1000)
-                .typeString("By clicking this button you consent to having your dreams saved in a database and posted on Instagram.")
-                .pauseFor(2000)
-                .start();
+           options={{
+            autoStart: true,
+            delay:150,
+            strings:"Welcome! The Dream Sequencer collects anonymous data including text and images.By clicking this button you consent to having your dreams saved in a database and posted on Instagram.",
+            loop: false
             }}
           />
         </h1>

@@ -9,21 +9,15 @@ const Introduction = ({ show }) => {
     <section className="fullpage-center" id="introdcution">
       <h1>
         {show &&
-          <Typewriter
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("Much of what we used to dream about in the past continues to influence our present and ")
-                .pauseFor(1000)
-                .typeString("by extension, to shape our future. ")
-                .pauseFor(1000)
-                .typeString("The Dream Sequencer helps to make these connections tangible by offering a moment of reflection. ")
-                .pauseFor(1000)
-                .typeString("Animated by Generative AI.")
-                .pauseFor(2000)
-                .start();
-            }}
-          />
-        }
+        <Typewriter
+          options={{
+            autoStart: true,
+            delay:150,
+            strings: 'Much of what we used to dream about in the past continues to influence our present and  by extension, to shape our future. The Dream Sequencer helps to make these connections tangible by offering a moment of reflection.Animated by Generative AI.',
+            loop: false,
+          }}
+        />
+      }
       </h1>
       <DButton text="click to continue" func={() =>
         scrollToElem("PastSession")} />
