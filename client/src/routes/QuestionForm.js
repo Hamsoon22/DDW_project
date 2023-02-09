@@ -23,17 +23,21 @@ export const QuestionForm = () => {
   );
 
   const [show, setShow] = useState(false);
+  const [pastshow, setPastshow] = useState(false);
 
   function onContinue() {
     setShow(true)
+  }
+  function startquestion(){
+    setPastshow(true)
   }
 
   return (
     <>
       <Background />
       <StartSection onContinue={onContinue} />
-      <Introduction show={show} />
-      <PastQuestionIntroduction nextAnchor={"pastquestion-0"} />
+      <Introduction show={show} startquestion={startquestion} />
+      <PastQuestionIntroduction pastshow={pastshow} nextAnchor={"pastquestion-0"} />
       {pastResultMap.map((result, index) => (
         <Question
           questionPrefix={"pastquestion"}

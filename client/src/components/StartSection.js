@@ -9,7 +9,6 @@ const StartSection = ({ onContinue }) => {
   const [visible, setVisible] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [show, setShow] = useState(false);
-  const [message, setMessage] = useState(false);
  
   return (
     <section className="fullpage-center" id="start">
@@ -38,7 +37,6 @@ const StartSection = ({ onContinue }) => {
           <DButton text="click to continue" func={() => 
           {
             scrollToElem("introdcution")
-            setMessage(true)
             onContinue()
           }
             } />

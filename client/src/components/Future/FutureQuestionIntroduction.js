@@ -11,7 +11,7 @@ export function FutureQuestionIntroduction() {
           options={{
             strings: 'Now take a moment to imagine your FUTURE.',
             autoStart: true,
-            loop: true,
+            loop: false,
           }}
         />
       </h1>

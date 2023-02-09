@@ -3,7 +3,7 @@ import React from "react";
 import DButton from "./shared/DButton";
 import Typewriter from 'typewriter-effect';
 
-const Introduction = ({ show }) => {
+const Introduction = ({ show , startquestion}) => {
 
   return (
     <section className="fullpage-center" id="introdcution">
@@ -20,7 +20,11 @@ const Introduction = ({ show }) => {
       }
       </h1>
       <DButton text="click to continue" func={() =>
-        scrollToElem("PastSession")} />
+        {
+          scrollToElem("PastSession")
+          startquestion()
+        }}
+         />
     </section>
   );
 };
