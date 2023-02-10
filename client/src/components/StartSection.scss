@@ -7,7 +7,7 @@
   
     75% {
       position: absolute;
-      bottom: 25%;
+      bottom: -2rem;
       opacity: 1;
     }
   
@@ -18,5 +18,5 @@
 
 .fadeIn{
     animation-name: FadeIn;
-    animation-duration: 3s;
+    animation-duration: 2.5s;
 }

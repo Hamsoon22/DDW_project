@@ -26,7 +26,7 @@ const StartSection = ({ onContinue }) => {
            options={{
             autoStart: true,
             delay:150,
-            strings:"Welcome! The Dream Sequencer collects anonymous data including text and images.By clicking this button you consent to having your dreams saved in a database and posted on Instagram.",
+            strings:"Welcome! The Dream Sequencer collects anonymous data including text and images. By clicking this button you consent to having your dreams saved in a database and posted on Instagram.",
             loop: false
             }}
           />
