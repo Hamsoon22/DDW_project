@@ -4,7 +4,6 @@ import DButton from "./shared/DButton";
 import { useState } from "react";
 
 export function Finish() {
-  const [data, setData] = useState(null);
   return (
     <section className="fullpage-center" id="finish">
       <h3>
@@ -16,6 +15,7 @@ export function Finish() {
       />
       <div className="btn-group" style={{ display: "flex" }}>
         <DButton text="Yes please" func={() => {
+          //add sending email(image)
           scrollToElem("start")
           setTimeout(function () {
             window.location.reload();

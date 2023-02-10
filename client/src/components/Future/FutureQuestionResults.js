@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { getImage } from "../../backend/app.service";
 import "../StartSection.scss";
 import LoadingSpinner from "../shared/LoadingSpinner"
+import { scrollToElem } from "../../utilities";
+import DButton from "../shared/DButton";
 
 export function FutureSessionResults({ futureAnswers, anchor }) {
   const promptText = futureAnswers?.join(" ")
@@ -37,7 +39,6 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
             {promptText}
           </p>
         </div>
-        <br />
         <h3>
           {!hidden && <button onClick={handleClick}>show me my dream of the future</button>}
           <br />
@@ -48,6 +49,13 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
             : (
               <img src={imageUrl} crossOrigin="anonymous" />
             )
+          }
+           {show ?
+            <div className="fadeIn">
+              <DButton text="Finish"
+                func={() => scrollToElem("finish")
+                } />
+            </div> : null
           }
           <br />
         </h3>

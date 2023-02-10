@@ -5,7 +5,7 @@ import DButton from "../shared/DButton";
 import "../StartSection.scss";
 import LoadingSpinner from "../shared/LoadingSpinner"
 
-export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, sendImage }) {
+export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
   const promptText = pastAnswers?.join(" ")
   // + " " + "sepia " + "in the past";
 

@@ -81,7 +81,9 @@ export const QuestionForm = () => {
         anchor={"futureSessionResults"}
         futureAnswers={futureAnswers}
       />
-      <Finish></Finish>
+      <Finish
+        anchor={"finshed"}
+      />
     </>
   );
 };
