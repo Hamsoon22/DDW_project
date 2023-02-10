@@ -39,4 +39,4 @@ David Zwart (Back-end development) : https://www.linkedin.com/in/david-zwart-885
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  * Written by David Zwart <davidzwa@gmail.com>, October 2022
- *
+
