@@ -11,7 +11,7 @@ function mod(v, l) {
   return v % l;
 }
 
-export const Presenter = () => {
+export const Future = () => {
   // YEUN CONTROL PANEL
   const imgSizePx = 512;
   const refetchPeriodMs = 5000;
@@ -38,7 +38,7 @@ export const Presenter = () => {
 
   const loadImages = useCallback(() => {
     listImages().then((r) => {
-      const vals = r.filter((el)=>el.type === "past")
+      const vals = r.filter((el)=>el.type === "future")
       let newest = pickHighest(vals)
       setNewestImage({
         url: `http://localhost:4000/${newest.image.replace("\\\\", "\\")}`,
@@ -229,9 +229,9 @@ export const Presenter = () => {
 
   return (
     <>
-      <image style={{width:"200px", height:"200px",position:"absolute"}} src={newestImage.url} alt="newest"/>
       <Background />
       <div className="stage" ref={domElement} />
+      {/* <image style={{width:"200px", height:"200px",position:"absolute"}} src={newestImage.url} alt="newest"/> */}
       
     </>
   );
