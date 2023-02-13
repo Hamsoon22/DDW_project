@@ -1,10 +1,13 @@
-import { Body, Controller, Get, Post, VERSION_NEUTRAL } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, Res, VERSION_NEUTRAL } from "@nestjs/common";
 import { AppService } from "@/app.service";
 import { ApiTags } from "@nestjs/swagger";
 import { ConfigService } from "@nestjs/config";
 import { dreamStudioApiKeyToken } from "@/app.constants";
 import { generateAsync } from "stability-client";
 import { RequestImageDto } from "@/dto/request-image.dto";
+import { v4 as uuid } from 'uuid';
+import { join } from 'path';
+import { Request, Response } from "express";
 
 @ApiTags("Root")
 @Controller({
@@ -19,25 +22,34 @@ export class AppController {
 
   @Get()
   async getImages() {
-    return this.appService.listCache().then((r) => {
-      return Object.values(r);
-    });
+    return await this.appService.getEntries()
   }
 
   @Post("dreamstudio-image")
-  async generateImage(@Body() input: RequestImageDto) {
+  async generateImage(@Body() input: RequestImageDto, @Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const apiKey = this.configService.get(dreamStudioApiKeyToken);
     const result = (await generateAsync({
       prompt: input.prompt,
       apiKey: apiKey,
       width: 512,
       height: 512,
+      outDir: join(process.cwd(), '.out',input.type),
       ...input.options
     })) as { images: any[] };
 
     const imageRef = result.images[0];
     const fp = imageRef?.filePath;
 
-    return await this.appService.addCacheEntry(fp);
+    let id = uuid()
+    if(input.type === "past") {
+      res.cookie("session", id)
+    } else {
+      id = req.cookies.session || id
+    }
+
+    console.log(id)
+
+    await this.appService.addEntry(input, fp, id);
+    return await this.appService.addCacheEntry(fp)
   }
 }

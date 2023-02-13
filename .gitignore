@@ -8,6 +8,7 @@
 **/.cache
 **/coverage
 **/*.tar
+*.sqlite
 
 # NPM publish
 *.tgz
