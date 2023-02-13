@@ -7,6 +7,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { HttpModule } from '@nestjs/axios';
 import * as Joi from 'joi';
 import {
+  corsOrigin,
   defaultMediaPath,
   defaultServerPort,
   dreamStudioApiKeyToken,
@@ -23,6 +24,8 @@ import { isTest } from '@/utils/env.utils';
 import { AutomapperModule } from '@automapper/nestjs';
 import { classes } from '@automapper/classes';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { dreamSequence } from './app.entity';
 
 @Module({
   controllers: [AppController],
@@ -50,6 +53,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
             [socketIOAdminUIPasswordBCryptToken]: Joi.string(),
             [socketIOAdminUIPasswordToken]: Joi.string(),
             [dreamStudioApiKeyToken]: Joi.string().required(),
+            [corsOrigin]: Joi.string().required(),
           })
         : Joi.object(),
     }),
@@ -65,6 +69,13 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     AutomapperModule.forRoot({
       strategyInitializer: classes(),
     }),
+    TypeOrmModule.forFeature([dreamSequence]),
+    TypeOrmModule.forRoot({
+      type :"sqlite",
+      database: "dreamSequence.sqlite",
+      entities: [__dirname + "/**/*.entity{.ts,.js}"],
+      synchronize: true
+    })
   ],
 })
 export class AppModule implements OnModuleInit {

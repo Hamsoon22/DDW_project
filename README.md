@@ -23,7 +23,10 @@ You should install yarn beforehand.
 
 ## Installation
 Create .env file in the server folder and put 
-``` DREAMSTUDIO_API_KEY= "Your token" ```
+```env
+  DREAMSTUDIO_API_KEY= "Your token"
+  CORS_ORIGIN= "http://localhost:3000" 
+```
 
 You can pay for the token here : https://stabilityai.us.auth0.com/
 

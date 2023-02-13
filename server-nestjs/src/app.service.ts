@@ -8,6 +8,9 @@ import {
 import { Cache } from 'cache-manager';
 import { join, relative } from 'path';
 import {existsSync, mkdirSync, readdirSync, statSync} from 'fs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { dreamSequence } from './app.entity';
+import { Repository } from 'typeorm';
 
 @Injectable({
   scope: Scope.DEFAULT,
@@ -16,7 +19,9 @@ export class AppService {
   logger = new Logger(AppService.name);
   readonly servePath = join(__dirname, '../../.out');
 
-  constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache) {}
+  constructor(
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache, @InjectRepository(dreamSequence) private dreamRepository: Repository<dreamSequence>
+    ) {}
 
   async listCache() {
     await this.loadCacheFromFolder();
@@ -41,6 +46,21 @@ export class AppService {
       lastModified,
     });
     return serveUrl;
+  }
+
+  async addEntry(input, filePath: string, session: string) {
+     const entry = await this.dreamRepository.create({
+      prompt: input.prompt,
+      image: relative(this.servePath, filePath),
+      type: input.type,
+      sessionId: session
+    });
+    this.dreamRepository.save(entry)
+    return
+  }
+
+  async getEntries() {
+    return await this.dreamRepository.find({});
   }
 
   async loadCacheFromFolder() {

@@ -15,7 +15,7 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
 
   const handleClick = () => {
     setIsLoading(true);
-    getImage(promptText)
+    getImage(promptText,"future")
       .then((data) => {
         setImageUrl(`http://localhost:4000/${data}`);
         setIsLoading(false)

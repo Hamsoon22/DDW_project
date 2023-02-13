@@ -17,3 +17,6 @@ export const socketIOAdminUIDefaultUsername = 'admin';
 
 // DreamStudio integration
 export const dreamStudioApiKeyToken = 'DREAMSTUDIO_API_KEY';
+
+//CORS
+export const corsOrigin = 'CORS_ORIGIN';

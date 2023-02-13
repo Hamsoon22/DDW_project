@@ -15,6 +15,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { useContainer } from 'class-validator';
 import { ConfigService } from '@nestjs/config';
 import { join } from 'path';
+import * as cookieParser from 'cookie-parser';
 
 export function configureSwagger() {
   // API spec - can be disabled in Prod
@@ -34,7 +35,12 @@ export function registerGlobals(app: NestExpressApplication) {
   // app.use(helmet());
 
   // SPA cross-origin capabilities without policy
-  app.enableCors();
+  
+  app.enableCors({
+    origin: process.env.CORS_ORIGIN.split(","),
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  });
 
   // API versioning capabilities
   app.setGlobalPrefix(apiPrefix, { exclude: ['health', ''] });
@@ -44,7 +50,7 @@ export function registerGlobals(app: NestExpressApplication) {
   });
 
   app.useStaticAssets(join(__dirname, '../../.out'));
-
+  app.use(cookieParser())
   // API DTO validation using class-transformer
   app.useGlobalPipes(
     new ValidationPipe({
@@ -73,7 +79,6 @@ export async function configureApp() {
   const config = configureSwagger();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(apiPrefix, app, document, {});
-
   // Ensures class-validator can resolve dependencies from global scope
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
 

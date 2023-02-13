@@ -17,7 +17,7 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
 
   const handleClick = () => {
     setIsLoading(true);
-    getImage(promptText)
+    getImage(promptText,"past")
       .then((data) => {
         setImageUrl(`http://localhost:4000/${data}`);
         setIsLoading(false)
