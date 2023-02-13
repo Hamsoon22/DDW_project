@@ -6,32 +6,37 @@ import { loadFull } from "tsparticles";
 
 export const Presenter = () => {
 
-  const particlesInit = useCallback(async engine => {
-    console.log(engine);
-    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    await loadFull(engine);
-  }, []);
+  const [images, setImages] = useState([]);
+  const [newestImage, setNewestImage] = useState(null);
 
-  const particlesLoaded = useCallback(async container => {
-    await console.log(container);
-  }, []);
-
+  const pickHighest = (obj) => {
+    return obj.sort((a,b)=>a.createdAt<b.createdAt?1:-1)[0]
+ };
 
   const loadImages = useCallback(() => {
-    listImages().then((data) => {
+    listImages().then((r) => {
+      const vals = r.filter((el)=>el.type === "past")
+      let newest = pickHighest(vals)
+      setNewestImage({
+        url: `http://localhost:4000/${newest.image.replace("\\\\", "\\")}`,
+        timestamp: new Date(newest.createdAt).valueOf(),
+      })
+      setImages(vals.filter((el)=>el.id !== newest.id).map((rval) => {
           return {
-            url: `http://localhost:4000/$${data}}`,
+            url: `http://localhost:4000/${rval.image.replace("\\\\", "\\")}`,
+            timestamp: new Date(rval.createdAt).valueOf(),
           };
+        })
+        .sort((x, y) => x.timestamp - y.timestamp));
     });
   });
 
   return (
     <>
+      <image style={{width:"200px", height:"200px",position:"absolute"}} src={newestImage.url} alt="newest"/>
       <Background />
-       {loadImages}
-      <div className="stage" ref={null} />
+      <div className="stage" ref={domElement} />
+      
     </>
   );
 };
