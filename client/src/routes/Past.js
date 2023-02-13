@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Two from "two.js";
 import { filterTruthy } from "./TwoUtils";
 import Background from "../components/shared/Background";
+import "./presenter.scss"
 
 function mod(v, l) {
   while (v < 0) {
@@ -14,7 +15,7 @@ function mod(v, l) {
 export const Past = () => {
   // YEUN CONTROL PANEL
   const imgSizePx = 512;
-  const refetchPeriodMs = 5000;
+  const refetchPeriodMs = 10000;
   const allScaleFactor = 0.5;
   // NEAREST IMAGES
   const nearSetSize = 6;
@@ -230,9 +231,9 @@ export const Past = () => {
   return (
     <>
       <Background />
+      <div className="title">Past images</div>
+      {/* <image className="newimage" src={newestImage.url} alt="newest"/> */}
       <div className="stage" ref={domElement} />
-      {/* <image style={{width:"200px", height:"200px",position:"absolute"}} src={newestImage.url} alt="newest"/> */}
-      
     </>
   );
 };
