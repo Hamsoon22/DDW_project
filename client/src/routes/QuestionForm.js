@@ -23,17 +23,25 @@ export const QuestionForm = () => {
   );
 
   const [show, setShow] = useState(false);
+  const [pastshow, setPastshow] = useState(false);
+  const [futureshow, setFutureshow] = useState(false);
 
   function onContinue() {
     setShow(true)
+  }
+  function startquestion(){
+    setPastshow(true)
+  }
+  function startfuturequestion(){
+    setFutureshow(true)
   }
 
   return (
     <>
       <Background />
       <StartSection onContinue={onContinue} />
-      <Introduction show={show} />
-      <PastQuestionIntroduction nextAnchor={"pastquestion-0"} />
+      <Introduction show={show} startquestion={startquestion} />
+      <PastQuestionIntroduction pastshow={pastshow} nextAnchor={"pastquestion-0"} />
       {pastResultMap.map((result, index) => (
         <Question
           questionPrefix={"pastquestion"}
@@ -54,9 +62,10 @@ export const QuestionForm = () => {
         pastAnswers={pastAnswers}
         anchor={"pastSessionResults"}
         nextAnchor={"futureSessionIntroduction"}
+        startfuturequestion={startfuturequestion}
       />
 
-      <FutureQuestionIntroduction />
+      <FutureQuestionIntroduction futureshow={futureshow} />
       {futureResultMap.map((result, index) => (
         <Question
           questionPrefix={"futurequestion"}
@@ -77,7 +86,9 @@ export const QuestionForm = () => {
         anchor={"futureSessionResults"}
         futureAnswers={futureAnswers}
       />
-      <Finish></Finish>
+      <Finish
+        anchor={"finshed"}
+      />
     </>
   );
 };
