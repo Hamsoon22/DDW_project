@@ -5,7 +5,7 @@ import DButton from "../shared/DButton";
 import "../StartSection.scss";
 import LoadingSpinner from "../shared/LoadingSpinner"
 
-export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
+export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, startfuturequestion }) {
   const promptText = pastAnswers?.join(" ")
   // + " " + "sepia " + "in the past";
 
@@ -53,7 +53,9 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor }) {
           {show ?
             <div className="fadeIn">
               <DButton text="Let's continue with your future!"
-                func={() => scrollToElem(nextAnchor)
+                func={() => { scrollToElem(nextAnchor)
+                startfuturequestion()
+                }
                 } />
             </div> : null
           }

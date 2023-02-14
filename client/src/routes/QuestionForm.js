@@ -24,12 +24,16 @@ export const QuestionForm = () => {
 
   const [show, setShow] = useState(false);
   const [pastshow, setPastshow] = useState(false);
+  const [futureshow, setFutureshow] = useState(false);
 
   function onContinue() {
     setShow(true)
   }
   function startquestion(){
     setPastshow(true)
+  }
+  function startfuturequestion(){
+    setFutureshow(true)
   }
 
   return (
@@ -58,9 +62,10 @@ export const QuestionForm = () => {
         pastAnswers={pastAnswers}
         anchor={"pastSessionResults"}
         nextAnchor={"futureSessionIntroduction"}
+        startfuturequestion={startfuturequestion}
       />
 
-      <FutureQuestionIntroduction />
+      <FutureQuestionIntroduction futureshow={futureshow} />
       {futureResultMap.map((result, index) => (
         <Question
           questionPrefix={"futurequestion"}
