@@ -231,7 +231,7 @@ export const Past = () => {
   return (
     <>
       <Background />
-      <div className="title">Past images</div>
+      {/* <div className="title">Past images</div> */}
       {/* <image className="newimage" src={newestImage.url} alt="newest"/> */}
       <div className="stage" ref={domElement} />
     </>

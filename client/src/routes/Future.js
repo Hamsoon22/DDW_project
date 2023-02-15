@@ -231,7 +231,7 @@ export const Future = () => {
   return (
     <>
       <Background />
-      <div className="title">Future images</div>
+      {/* <div className="title">Future images</div> */}
       <div className="stage" ref={domElement} />
       {/* <image className="newimage" src={newestImage.url} alt="newest"/> */}
     </>
