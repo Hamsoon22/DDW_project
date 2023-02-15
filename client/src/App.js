@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/future" element={<Future />}></Route>
         </Routes>
       </BrowserRouter>
-      <Footer className="footer-app" />
+      {/* <Footer className="footer-app" /> */}
     </>
   );
 };

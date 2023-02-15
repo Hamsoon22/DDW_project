@@ -14,7 +14,7 @@ function mod(v, l) {
 export const Future = () => {
   // YEUN CONTROL PANEL
   const imgSizePx = 512;
-  const refetchPeriodMs = 10000;
+  const refetchPeriodMs =5000;
   const allScaleFactor = 0.5;
   // NEAREST IMAGES
   const nearSetSize = 6;
@@ -30,7 +30,7 @@ export const Future = () => {
   const farScale = 0.25 * allScaleFactor;
 
   const [images, setImages] = useState([]);
-  const [newestImage, setNewestImage] = useState(null);
+  // const [newestImage, setNewestImage] = useState(null);
 
   const pickHighest = (obj) => {
     return obj.sort((a,b)=>a.createdAt<b.createdAt?1:-1)[0]
@@ -39,12 +39,12 @@ export const Future = () => {
   const loadImages = useCallback(() => {
     listImages().then((r) => {
       const vals = r.filter((el)=>el.type === "future")
-      let newest = pickHighest(vals)
-      setNewestImage({
-        url: `http://localhost:4000/${newest.image.replace("\\\\", "\\")}`,
-        timestamp: new Date(newest.createdAt).valueOf(),
-      })
-      setImages(vals.filter((el)=>el.id !== newest.id).map((rval) => {
+      // let newest = pickHighest(vals)
+      // setNewestImage({
+      //   url: `http://localhost:4000/${newest.image.replace("\\\\", "\\")}`,
+      //   timestamp: new Date(newest.createdAt).valueOf(),
+      // })
+      setImages(vals.filter((el)=>el.id).map((rval) => {
           return {
             url: `http://localhost:4000/${rval.image.replace("\\\\", "\\")}`,
             timestamp: new Date(rval.createdAt).valueOf(),
@@ -153,7 +153,7 @@ export const Future = () => {
         return;
       }
 
-      const theta = frameCount / 30;
+      const theta = frameCount / 100;
 
       for (let i = 0; i < two.scene.children.length; i++) {
         const child = two.scene.children[i];

@@ -6,8 +6,8 @@ import { scrollToElem } from "../../utilities";
 import DButton from "../shared/DButton";
 
 export function FutureSessionResults({ futureAnswers, anchor }) {
-  const promptText = futureAnswers?.join(" ")
-  // + "colorful" +  " " + "futuristic";
+  const promptText = futureAnswers?.join(" ") + "futuristic";
+  // + "colorful" +  " 
 
   const [imageUrl, setImageUrl] = useState("");
   const [visible, setVisible] = useState(false);

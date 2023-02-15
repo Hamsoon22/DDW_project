@@ -9,19 +9,19 @@
     {
       "category": "data/privacy/technology",
       "type": "past",
-      "question": "What did you imagine you would wear?",
+      "question": "What do you imagine will surround you?",
       "answer": null
     },
     {
       "category": "mobility/transportation",
       "type": "past",
-      "question": "With whom did you imagine you would spend time?",
+      "question": "What do you imagine you will wear?",
       "answer": null
     },
     {
       "category": "clothing and comfort (temperatures/climate change)",
       "type": "past",
-      "question": "When you were younger, what did you imagine you would wear in the future?",
+      "question": "With whom do you imagine you will spend time?",
       "answer": null
     }
   ],

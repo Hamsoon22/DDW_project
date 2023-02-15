@@ -9,6 +9,7 @@ import { FutureSessionResults } from "../components/Future/FutureQuestionResults
 import { Finish } from "../components/Finished";
 import Introduction from "../components/Introduction";
 import Background from "../components/shared/Background";
+import Footer from "../components/Footer";
 
 export const QuestionForm = () => {
   const pastResultMap = data.pastResults;
@@ -89,6 +90,7 @@ export const QuestionForm = () => {
       <Finish
         anchor={"finshed"}
       />
+      <Footer className="footer-app" />
     </>
   );
 };
