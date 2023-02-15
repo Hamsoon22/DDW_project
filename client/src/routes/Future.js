@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Two from "two.js";
 import { filterTruthy } from "./TwoUtils";
 import Background from "../components/shared/Background";
-import "./presenter.scss"
 
 function mod(v, l) {
   while (v < 0) {
