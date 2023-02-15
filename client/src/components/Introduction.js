@@ -16,7 +16,7 @@ const Introduction = ({ show, startquestion }) => {
             options={{
               autoStart: true,
               delay: 150,
-              strings: 'Much of what we used to dream about in the past continues to influence our present and  by extension, to shape our future.',
+              strings: 'Much of what we used to dream about in the past continues to influence our present and  by extension, shape our future.',
               loop: false,
             }}
           />

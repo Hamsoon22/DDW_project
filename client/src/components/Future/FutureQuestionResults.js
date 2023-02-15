@@ -35,9 +35,9 @@ export function FutureSessionResults({ futureAnswers, anchor }) {
           <div className="past-image-result"></div>
         </h3>
         <div className="promptText">
-          <p>
+          {/* <p>
             {promptText}
-          </p>
+          </p> */}
         </div>
         <h3>
           {!hidden && <button onClick={handleClick}>show me my dream of the future</button>}

@@ -7,7 +7,7 @@ export function Finish() {
     <section className="fullpage-center" id="finish">
       <h3>
         <br />
-      Thank you for your answer.</h3>
+      "The future belongs to those who believe in the beauty of their dreams" <br></br>––Eleanor Roosevelt</h3>
       {/* <Sending /> */}
       <div className="btn-group" style={{ display: "flex" }}>
         <DButton text="Start over" func={() => {

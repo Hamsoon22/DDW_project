@@ -33,9 +33,10 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, startfutu
         <h3>
           <div className="past-image-result"></div>
         </h3>
-        <div className="promptText"><p>
+        <div className="promptText">
+          {/* <p>
           {promptText}
-        </p>
+        </p> */}
         </div>
         <h3>
           Let’s paint the picture
