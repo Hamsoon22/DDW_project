@@ -15,7 +15,7 @@ const StartSection = ({ onContinue }) => {
       {!hidden && <button onClick={() => {
         setVisible(true);
         setHidden(true);
-        setTimeout(() => { setShow(true) }, 20000)
+        setTimeout(() => { setShow(true) }, 10000)
       }}>
         Click to Start
       </button>
@@ -25,7 +25,7 @@ const StartSection = ({ onContinue }) => {
           <Typewriter
            options={{
             autoStart: true,
-            delay:100,
+            delay:50,
             strings:"Welcome! The Dream Sequencer collects anonymous data including text and images. By clicking this button you consent to having your dreams saved in a database and posted on Instagram.",
             loop: false
             }}

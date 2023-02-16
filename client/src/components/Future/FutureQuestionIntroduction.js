@@ -10,7 +10,7 @@ export function FutureQuestionIntroduction({futureshow}) {
       {futureshow &&
         <Typewriter
           options={{
-            delay: 100,
+            delay: 50,
             strings: 'Now take a moment to imagine your FUTURE.',
             autoStart: true,
             loop: false,
