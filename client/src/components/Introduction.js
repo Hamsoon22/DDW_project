@@ -33,7 +33,7 @@ const Introduction = ({ show, startquestion }) => {
           <Typewriter
             options={{
               autoStart: true,
-              delay: 150,
+              delay: 100,
               strings: 'The Dream Sequencer helps to make these connections tangible by offering a moment of reflection. Animated by Generative AI.',
               loop: false,
             }}

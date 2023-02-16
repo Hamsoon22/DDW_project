@@ -10,6 +10,7 @@ export function PastQuestionIntroduction({ nextAnchor, pastshow }) {
         {pastshow &&
           <Typewriter
             options={{
+              delay: 100,
               strings: 'Take a moment to think about the PAST and remind yourself of the things you dreamed of when you were younger.',
               autoStart: true,
               loop: false,
