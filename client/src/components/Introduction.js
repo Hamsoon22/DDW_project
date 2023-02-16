@@ -15,7 +15,7 @@ const Introduction = ({ show, startquestion }) => {
           <Typewriter
             options={{
               autoStart: true,
-              delay: 150,
+              delay: 100,
               strings: 'Much of what we used to dream about in the past continues to influence our present and  by extension, shape our future.',
               loop: false,
             }}

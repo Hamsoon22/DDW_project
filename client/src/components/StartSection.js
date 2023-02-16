@@ -15,7 +15,7 @@ const StartSection = ({ onContinue }) => {
       {!hidden && <button onClick={() => {
         setVisible(true);
         setHidden(true);
-        setTimeout(() => { setShow(true) }, 30000)
+        setTimeout(() => { setShow(true) }, 20000)
       }}>
         Click to Start
       </button>
