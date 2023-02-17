@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { getImage } from "../../backend/app.service";
 import { scrollToElem } from "../../utilities";
 import DButton from "../shared/DButton";
-import "../StartSection.scss";
 import LoadingSpinner from "../shared/LoadingSpinner"
 
 export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, startfuturequestion }) {
@@ -17,7 +16,7 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, startfutu
 
   const handleClick = () => {
     setIsLoading(true);
-    getImage(promptText,"past")
+    getImage(promptText, "past")
       .then((data) => {
         setImageUrl(`http://localhost:4000/${data}`);
         setIsLoading(false)
@@ -31,6 +30,7 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, startfutu
     <section className="fullpage-center" id={anchor}>
       <div>
         <h3>
+          Let’s paint the picture
           <div className="past-image-result"></div>
         </h3>
         <div className="promptText">
@@ -39,27 +39,25 @@ export function PastQuestionResults({ pastAnswers, anchor, nextAnchor, startfutu
         </p> */}
         </div>
         <h3>
-          Let’s paint the picture
-          <br></br>
-          {!hidden && <button onClick={handleClick} disabled={isLoading}>show me my past dream</button>}
-          <br></br>
-          {isLoading ?
-            <>
-              <LoadingSpinner />
-            </>
-            : (
-              <img src={imageUrl} crossOrigin="anonymous" />
-            )
-          }
-          {show ?
-            <div className="fadeIn">
-              <DButton text="Let's continue with your future!"
-                func={() => { scrollToElem(nextAnchor)
+        {!hidden && <button onClick={handleClick} disabled={isLoading}>show me my past dream</button>}
+        {isLoading ?
+          <>
+            <LoadingSpinner />
+          </>
+          : (
+            <img src={imageUrl} crossOrigin="anonymous" />
+          )
+        }
+        {show ?
+          <div className="fadeIn">
+            <DButton text="Let's continue with your future!"
+              func={() => {
+                scrollToElem(nextAnchor)
                 startfuturequestion()
-                }
-                } />
-            </div> : null
-          }
+              }
+              } />
+          </div> : null
+        }
         </h3>
       </div>
 
