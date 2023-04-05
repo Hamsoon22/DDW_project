@@ -28,8 +28,7 @@ Create .env file in the server folder and put
   CORS_ORIGIN= "http://localhost:3000" 
 ```
 
-You can pay for the token here : https://stabilityai.us.auth0.com/
-
+You can pay for the token here : https://beta.dreamstudio.ai/
 ## Authors
 
 Yeun Kim (Design & Front-end development) : yeunkim@designonlytogether.com | https://www.linkedin.com/in/yeun-kim-58a76218a/
