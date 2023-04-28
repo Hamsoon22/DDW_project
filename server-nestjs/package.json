@@ -45,7 +45,7 @@
     "joi": "17.9.2",
     "nest-winston": "1.9.1",
     "reflect-metadata": "0.1.13",
-    "rxjs": "7.8.0",
+    "rxjs": "7.8.1",
     "sqlite3": "^5.1.4",
     "stability-client": "1.8.0",
     "swagger-ui-express": "4.6.2",
