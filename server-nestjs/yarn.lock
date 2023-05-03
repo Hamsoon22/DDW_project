@@ -4023,10 +4023,10 @@ ssri@^8.0.0, ssri@^8.0.1:
   dependencies:
     minipass "^3.1.1"
 
-stability-client@1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/stability-client/-/stability-client-1.8.0.tgz#2c1c3c69dd89101f5ee5edae3a73ed95788144cf"
-  integrity sha512-zxNUTkBkicpBS4derFvDMQdouB3wdaKDhG+YL2+NHvoE+d1RDRqeKrDT5G+OlcmNQaefTZYhcX/myLTvG1oQzw==
+stability-client@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/stability-client/-/stability-client-1.9.0.tgz#83bc3327fa6d4a6d55b1b96ffdf45ea15dfbba44"
+  integrity sha512-OmfQ/boZEgq+7Yngx3VjskvhLtiheJLhsoaQ2RkAxYC/Yz/7+WQYnKH6Rdoywwu1wST96taar7x4FAqY8oIkfw==
   dependencies:
     "@improbable-eng/grpc-web" "^0.15.0"
     "@improbable-eng/grpc-web-node-http-transport" "^0.15.0"
