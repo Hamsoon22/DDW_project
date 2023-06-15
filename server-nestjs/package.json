@@ -23,7 +23,7 @@
     "@automapper/nestjs": "8.7.7",
     "@nestjs/axios": "2.0.0",
     "@nestjs/common": "9.4.2",
-    "@nestjs/config": "2.3.2",
+    "@nestjs/config": "2.3.4",
     "@nestjs/core": "9.4.2",
     "@nestjs/event-emitter": "1.4.1",
     "@nestjs/mapped-types": "1.2.2",
