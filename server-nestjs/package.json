@@ -18,7 +18,7 @@
     "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
-    "@automapper/classes": "8.7.7",
+    "@automapper/classes": "8.8.1",
     "@automapper/core": "8.7.7",
     "@automapper/nestjs": "8.7.7",
     "@nestjs/axios": "3.0.1",
