@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@automapper/classes": "8.8.1",
-    "@automapper/core": "8.7.7",
+    "@automapper/core": "8.8.1",
     "@automapper/nestjs": "8.7.7",
     "@nestjs/axios": "3.0.1",
     "@nestjs/common": "10.3.0",
