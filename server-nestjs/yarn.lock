@@ -1815,9 +1815,9 @@ dotenv@16.3.1:
   integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 dotenv@^16.0.2, dotenv@^16.0.3:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.2.tgz#3cb611ce5a63002dbabf7c281bc331f69d28f03f"
-  integrity sha512-HTlk5nmhkm8F6JcdXvHIzaorzCoziNQT9mGxLPVXW8wJF1TiGSL60ZGB4gHWabHOaMmWmhvk2/lPHfnBiT78AQ==
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.0.tgz#ac21c3fcaad2e7832a1cd0c0e4e8e52225ecda0e"
+  integrity sha512-WvImr5kpN5NGNn7KaDjJnLTh5rDVLZiDf/YLA8T1ZEZEBZNEDOE+mnkS0PVjPax8ZxBP5zC5SLMB3/9VV5de9g==
 
 eastasianwidth@^0.2.0:
   version "0.2.0"
@@ -1830,9 +1830,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.601:
-  version "1.4.640"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.640.tgz#76290a36fa4b5f1f4cadaf1fc582478ebb3ac246"
-  integrity sha512-z/6oZ/Muqk4BaE7P69bXhUhpJbUM9ZJeka43ZwxsDshKtePns4mhBlh8bU5+yrnOnz3fhG82XLzGUXazOmsWnA==
+  version "1.4.643"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.643.tgz#081a20c5534db91e66ef094f68624960f674768f"
+  integrity sha512-QHscvvS7gt155PtoRC0dR2ilhL8E9LHhfTQEq1uD5AL0524rBLAwpAREFH06f87/e45B9XkR6Ki5dbhbCsVEIg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2897,9 +2897,9 @@ levn@^0.4.1:
     type-check "~0.4.0"
 
 libphonenumber-js@^1.10.53:
-  version "1.10.53"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.53.tgz#8dbfe1355ef1a3d8e13b8d92849f7db7ebddc98f"
-  integrity sha512-sDTnnqlWK4vH4AlDQuswz3n4Hx7bIQWTpIcScJX+Sp7St3LXHmfiax/ZFfyYxHmkdCvydOLSuvtAO/XpXiSySw==
+  version "1.10.54"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.54.tgz#8dfba112f49d1b9c2a160e55f9697f22e50f0841"
+  integrity sha512-P+38dUgJsmh0gzoRDoM4F5jLbyfztkU6PY6eSK6S5HwTi/LPvnwXqVCQZlAy1FxZ5c48q25QhxGQ0pq+WQcSlQ==
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
