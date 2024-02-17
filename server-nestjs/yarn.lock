@@ -1838,9 +1838,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.668:
-  version "1.4.672"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.672.tgz#f8ce803b43898b7e91dcfcf70d6fd656b11a645d"
-  integrity sha512-YYCy+goe3UqZqa3MOQCI5Mx/6HdBLzXL/mkbGCEWL3sP3Z1BP9zqAzeD3YEmLZlespYGFtyM8tRp5i2vfaUGCA==
+  version "1.4.673"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.673.tgz#1f077d9a095761804aec7ec6346c3f4b69b56534"
+  integrity sha512-zjqzx4N7xGdl5468G+vcgzDhaHkaYgVcf9MqgexcTqsl2UHSCmOj/Bi3HAprg4BZCpC7HyD8a6nZl6QAZf72gw==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -4315,9 +4315,9 @@ swagger-ui-dist@5.11.2:
   integrity sha512-jQG0cRgJNMZ7aCoiFofnoojeSaa/+KgWaDlfgs8QN+BXoGMpxeMVY5OEnjq4OlNvF3yjftO8c9GRAgcHlO+u7A==
 
 swagger-ui-dist@>=5.0.0:
-  version "5.11.6"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.11.6.tgz#3980959124c3e156c1e1cb5cf918a1c09cff6051"
-  integrity sha512-K5BpYuMoPpJY7NwCHIWohH6tU9o0fs1+plNT5KJ+3BBlVEh4H1CpeKJV8o91lpscVY9oqb2jmaAassnW3wVoTg==
+  version "5.11.7"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.11.7.tgz#4765f2f2c4abe30b34d4aa03d625cf12833fb5b4"
+  integrity sha512-8xqfJFRVEEU3Zxe8vQvC4g827lDOqV9haougR3tnlgF/PkDN//9Y6kGV9qsT0A9vawlbdF8dF/R6HrlDyHvbEQ==
 
 swagger-ui-express@5.0.0:
   version "5.0.0"
