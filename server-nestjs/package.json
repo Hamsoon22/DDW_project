@@ -31,7 +31,7 @@
     "@nestjs/platform-socket.io": "10.3.3",
     "@nestjs/schedule": "4.0.1",
     "@nestjs/swagger": "7.3.0",
-    "@nestjs/terminus": "10.2.2",
+    "@nestjs/terminus": "10.2.3",
     "@nestjs/typeorm": "^10.0.0",
     "@nestjs/websockets": "10.3.3",
     "@socket.io/admin-ui": "0.5.1",
