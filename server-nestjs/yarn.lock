@@ -1799,9 +1799,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.668:
-  version "1.4.745"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.745.tgz#9c202ce9cbf18a5b5e0ca47145fd127cc4dd2290"
-  integrity sha512-tRbzkaRI5gbUn5DEvF0dV4TQbMZ5CLkWeTAXmpC9IrYT+GE+x76i9p+o3RJ5l9XmdQlI1pPhVtE9uNcJJ0G0EA==
+  version "1.4.746"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.746.tgz#787213e75f6c7bccb55dfe8b68170555c548d093"
+  integrity sha512-jeWaIta2rIG2FzHaYIhSuVWqC6KJYo7oSBX4Jv7g+aVujKztfvdpf+n6MGwZdC5hQXbax4nntykLH2juIQrfPg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2906,9 +2906,9 @@ levn@^0.4.1:
     type-check "~0.4.0"
 
 libphonenumber-js@^1.10.53:
-  version "1.10.60"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.60.tgz#1160ec5b390d46345032aa52be7ffa7a1950214b"
-  integrity sha512-Ctgq2lXUpEJo5j1762NOzl2xo7z7pqmVWYai0p07LvAkQ32tbPv3wb+tcUeHEiXhKU5buM4H9MXsXo6OlM6C2g==
+  version "1.10.61"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.61.tgz#efd350a6283e5d6a804f0cd17dae1f563410241d"
+  integrity sha512-TsQsyzDttDvvzWNkbp/i0fVbzTGJIG0mUu/uNalIaRQEYeJxVQ/FPg+EJgSqfSXezREjM0V3RZ8cLVsKYhhw0Q==
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
@@ -3284,9 +3284,9 @@ nest-winston@1.9.4:
     fast-safe-stringify "^2.1.1"
 
 node-abi@^3.3.0:
-  version "3.60.0"
-  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.60.0.tgz#a325b13b3c401c2230202897559fbf0b5f9a90ac"
-  integrity sha512-zcGgwoXbzw9NczqbGzAWL/ToDYAxv1V8gL1D67ClbdkIfeeDBbY0GelZtC25ayLvVjr2q2cloHeQV1R0QAWqRQ==
+  version "3.61.0"
+  resolved "https://registry.yarnpkg.com/node-abi/-/node-abi-3.61.0.tgz#9248f8b8e35dbae2fafeecd6240c5a017ea23f3f"
+  integrity sha512-dYDO1rxzvMXjEMi37PBeFuYgwh3QZpsw/jt+qOmnRSwiV4z4c+OLoRlTa3V8ID4TrkSQpzCVc9OI2sstFaINfQ==
   dependencies:
     semver "^7.3.5"
 
@@ -4297,9 +4297,9 @@ swagger-ui-dist@5.11.2:
   integrity sha512-jQG0cRgJNMZ7aCoiFofnoojeSaa/+KgWaDlfgs8QN+BXoGMpxeMVY5OEnjq4OlNvF3yjftO8c9GRAgcHlO+u7A==
 
 swagger-ui-dist@>=5.0.0:
-  version "5.16.2"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.16.2.tgz#986cfac365ed2a93172612a71fdfbaa0e559c763"
-  integrity sha512-zcRXKnDi0605AOmkv5sOPvr1m4AE4gVFdTGhapPs7fylEwv4tv5k7vbtlPPcKJQThKafASJhErWX6RZK2Wbztg==
+  version "5.17.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.17.0.tgz#a781618e4410551480fa95fcee9d1266b46ed311"
+  integrity sha512-PtEozc87rN6i6rqLYNVTK+1ZAYmCMy6poU6I2MOJXD19BVv6D7U9zwS8geRbtfamCM5yUwWkSNQKWGK58vculg==
 
 swagger-ui-express@5.0.0:
   version "5.0.0"
@@ -4371,9 +4371,9 @@ terser-webpack-plugin@^5.3.10:
     terser "^5.26.0"
 
 terser@^5.26.0:
-  version "5.30.3"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-5.30.3.tgz#f1bb68ded42408c316b548e3ec2526d7dd03f4d2"
-  integrity sha512-STdUgOUx8rLbMGO9IOwHLpCqolkDITFFQSMYYwKE1N2lY6MVSaeoi10z/EhWxRc6ybqoVmKSkhKYH/XUpl7vSA==
+  version "5.30.4"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-5.30.4.tgz#62b4d16a819424e6317fd5ceffb4ee8dc769803a"
+  integrity sha512-xRdd0v64a8mFK9bnsKVdoNP9GQIKUAaJPTaqEQDL4w/J8WaW4sWXXoMZ+6SimPkfT5bElreXf8m9HnmPc3E1BQ==
   dependencies:
     "@jridgewell/source-map" "^0.3.3"
     acorn "^8.8.2"
