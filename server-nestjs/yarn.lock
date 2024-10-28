@@ -1325,12 +1325,12 @@ cacache@^15.2.0:
     tar "^6.0.2"
     unique-filename "^1.1.1"
 
-cache-manager@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-6.1.1.tgz#2ea0a567a43102364bacc7aaabce4887e3344df7"
-  integrity sha512-Gvj+GMPYJwYWZKvvk2Ssrd+HXjfVycQwblLfU9ezqAS2AJiesB2wqu6q/vQIouSZuGvfra4J85aO9RhQeMpVWQ==
+cache-manager@6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-6.1.2.tgz#307eeb8b8888ce87a59c0ed73fccc009d97bfa7f"
+  integrity sha512-hBFCGc7g1sVMto7+Dwr1BWrOXOMuLvC77SbTYaI44tZPFK9myaySBmgvmBYgc7iqbG/qNyUc6oyuDOcHn6oTvw==
   dependencies:
-    keyv "^5.1.0"
+    keyv "^5.1.2"
 
 call-bind@^1.0.7:
   version "1.0.7"
@@ -2870,7 +2870,7 @@ keyv@^4.5.4:
   dependencies:
     json-buffer "3.0.1"
 
-keyv@^5.1.0:
+keyv@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-5.1.2.tgz#554772806cbc0b50fed378cb4f21cea7c3bcc8c5"
   integrity sha512-gOWSYwaPJsBNB8r+ptJDHLgyw7C7YPeta3gDHfn9kEYMgWNGqw2m+GOvfl6V2CsaiuNfxd1LFz7pnXD5KsFU3w==
