@@ -401,17 +401,17 @@
     jsonc-parser "3.3.1"
     pluralize "8.0.0"
 
-"@nestjs/swagger@8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-8.0.2.tgz#934b6c72fc220c445b28f5d54faedbbc2aa4c9e1"
-  integrity sha512-1Y1YxGZN670FUph6T9HifFjc/3C3Trf3Q01iKDa+qlTP7WF5VFIADZLUS1LJYJfYu1Ss7fJVdxhcJo8+cfocVw==
+"@nestjs/swagger@8.0.3":
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-8.0.3.tgz#6be27cedcaa88b0ad65f37211f915f7a2f0a5d9a"
+  integrity sha512-bAke1vMMiRivLPWQQiLSDCv7U+wO9COVHQSylv2kyAkW1EYU3R/D/l2FJvopSOPV3bLrysaOxSU8kIYPeebfmw==
   dependencies:
     "@microsoft/tsdoc" "^0.15.0"
     "@nestjs/mapped-types" "2.0.5"
     js-yaml "4.1.0"
     lodash "4.17.21"
     path-to-regexp "3.3.0"
-    swagger-ui-dist "5.17.14"
+    swagger-ui-dist "5.18.1"
 
 "@nestjs/terminus@10.2.3":
   version "10.2.3"
@@ -4263,12 +4263,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-swagger-ui-dist@5.17.14:
-  version "5.17.14"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.17.14.tgz#e2c222e5bf9e15ccf80ec4bc08b4aaac09792fd6"
-  integrity sha512-CVbSfaLpstV65OnSjbXfVd6Sta3q3F7Cj/yYuvHMp1P90LztOLs6PfUnKEVAeiIVQt9u2SaPwv0LiH/OyMjHRw==
-
-swagger-ui-dist@>=5.0.0:
+swagger-ui-dist@5.18.1, swagger-ui-dist@>=5.0.0:
   version "5.18.1"
   resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.18.1.tgz#3a58ddf788ec514604331255c58d0a032310fbfd"
   integrity sha512-nOUpYnU6HZ5Eq2+xmptFti4RX/Vcbe+6PDtQGnSiGT2j9ImgcrJsjsX3OEl8TZV+48y8Wfn0gcjxyoXsMFHr/w==
